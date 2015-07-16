@@ -1,0 +1,133 @@
+//
+//  DisburseViewController.m
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/10.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "DisburseViewController.h"
+#import "DisburseDetailViewController.h"
+#import "DisburseTableViewCell.h"
+#import<CoreText/CoreText.h>
+
+@interface DisburseViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *disbuseTableView;
+
+@end
+
+@implementation DisburseViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+
+    NSMutableDictionary *nameAndStateDic1 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",@"NO",@"state",nil];
+    NSMutableDictionary *nameAndStateDic2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",@"NO",@"state",nil];
+    NSMutableDictionary *nameAndStateDic3 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"AttachedCell",@"cell",@"YES",@"state",nil];
+    NSMutableDictionary *nameAndStateDic4 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",@"NO",@"state",nil];
+    self.dataArray = [[NSMutableArray alloc] initWithObjects:nameAndStateDic1,nameAndStateDic2,nameAndStateDic3, nameAndStateDic4,nil];
+    
+}
+
+#pragma mark
+#pragma mark UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    if ([self.dataArray[indexPath.row][@"cell"] isEqualToString:@"DisburseTableViewCell"]) {
+        
+        static NSString *identifier = @"DisburseTableViewCell";
+        DisburseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        cell.monthLabel.text = @(self.dataArray.count - indexPath.row).stringValue ;
+        
+        return cell;
+    }
+    else {
+        
+        static NSString *identifier = @"DisburseTableViewSubCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        return cell;
+    }
+    
+    return nil;
+
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //点击cell后 改变cell的颜色 渐变
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSIndexPath *path = nil;
+    if ([self.dataArray[indexPath.row][@"cell"] isEqualToString:@"DisburseTableViewCell"])
+    {
+        if ([self.dataArray[indexPath.row][@"cell"] isEqualToString:@"DisburseTableViewCell"]) {
+            path = [NSIndexPath indexPathForItem:(indexPath.row+1) inSection:indexPath.section];
+        }
+        else if ([self.dataArray[indexPath.row][@"cell"] isEqualToString:@"AttachedCell"])
+        {
+            path = indexPath;
+        }
+        
+        NSLog(@"现在是第%ld行",indexPath.row);
+        NSLog(@"%@....%@...%ld",self.dataArray[indexPath.row],self.dataArray[indexPath.row][@"state"],indexPath.row);
+        if ([self.dataArray[indexPath.row][@"state"] boolValue] ) {
+            // 关闭附加cell
+            NSMutableDictionary *dd = self.dataArray[indexPath.row];
+            NSString *name = dd[@"name"];
+            NSMutableDictionary *nameAndStateDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",name,@"name",@"NO",@"state",nil];
+            self.dataArray[(path.row-1)] = nameAndStateDic;
+            [self.dataArray removeObjectAtIndex:path.row];
+//            NSLog(@"MainCell's grouparr:%@",self.dataArray);
+            [tableView beginUpdates];
+            [tableView deleteRowsAtIndexPaths:@[path]  withRowAnimation:UITableViewRowAnimationFade];
+            [tableView endUpdates];
+        }
+        else
+        {
+            // 打开附加cell
+            NSMutableDictionary *subDic = self.dataArray[indexPath.row];
+            NSString *name = subDic[@"name"];
+            if (!name) {
+                name = @"";
+            }
+            
+            NSMutableDictionary *nameAndStateDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",@"YES",@"state",name,@"name",nil];
+//            NSLog(@"%ld",path.row-1);
+            self.dataArray[(path.row - 1)] = nameAndStateDic;
+            
+            NSMutableDictionary *nameAndStateDic1 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"AttachedCell",@"cell",@"YES",@"state",nil];
+            
+            [self.dataArray insertObject:nameAndStateDic1 atIndex:path.row];
+
+            [tableView beginUpdates];
+            [tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView endUpdates];
+        }
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

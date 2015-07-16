@@ -1,0 +1,24 @@
+//
+//  CashierDinnnerViewController.h
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/3.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "BaseTableViewController.h"
+
+@interface CashierDinnnerViewController : BaseTableViewController
+
+
+@property (weak, nonatomic) IBOutlet UILabel *dinnnerPersonsNameLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *dinnnerDeviationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dinnnerSalesTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dinnnerTotalMoneyTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dinnnerReservedTextField;
+
+@property (weak, nonatomic) IBOutlet UITextView *dinnerCommentTextView;
+@property (nonatomic, strong) CashierModel *cashierModel;
+
+@end

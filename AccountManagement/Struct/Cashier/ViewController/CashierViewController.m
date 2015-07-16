@@ -1,0 +1,279 @@
+//
+//  CashierViewController.m
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/2.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "CashierViewController.h"
+#import "CashierDetailInfoViewController.h"
+#import "CashierTableViewCell.h"
+#import "NSDate+UIUtils.h"
+
+@interface CashierViewController ()<JTCalendarDataSource>{
+    NSMutableDictionary *eventsByDate;
+}
+
+@property (strong, nonatomic) JTCalendar *calendar;
+@property (weak, nonatomic) IBOutlet UITableView *cashierTableView;
+@property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView;
+@property (weak, nonatomic) IBOutlet JTCalendarContentView *calendarContentView;
+@property (weak, nonatomic) IBOutlet UIView *detailInfoLabel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cashierContentViewConstraints;
+@end
+
+
+@implementation CashierViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+//    [self geCashierListData];
+    
+    self.calendar = [JTCalendar new];
+    
+    // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
+    // Or you will have to call reloadAppearance
+    {
+        self.calendar.calendarAppearance.calendar.firstWeekday = 2; // Sunday == 1, Saturday == 7
+        self.calendar.calendarAppearance.dayCircleRatio = 9. / 10.;
+        self.calendar.calendarAppearance.ratioContentMenu = 2.;
+        self.calendar.calendarAppearance.focusSelectedDayChangeMode = YES;
+        //163
+//        self.calendar.calendarAppearance.dayBackgroundColor = [UIColor colorWithR:110 G:149 B:255];
+        self.calendar.calendarAppearance.dayBackgroundColor = [UIColor colorWithR:255 G:127 B:49];
+        self.calendar.calendarAppearance.dayDotColor = [UIColor redColor];
+        
+        // Customize the text for each month
+        self.calendar.calendarAppearance.monthBlock = ^NSString *(NSDate *date, JTCalendar *jt_calendar){
+            NSCalendar *calendar = jt_calendar.calendarAppearance.calendar;
+            NSDateComponents *comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth fromDate:date];
+            NSInteger currentMonthIndex = comps.month;
+            
+            static NSDateFormatter *dateFormatter;
+            if(!dateFormatter){
+                dateFormatter = [NSDateFormatter new];
+                dateFormatter.timeZone = jt_calendar.calendarAppearance.calendar.timeZone;
+            }
+            
+            while(currentMonthIndex <= 0){
+                currentMonthIndex += 12;
+            }
+            
+            NSString *monthText = [[dateFormatter standaloneMonthSymbols][currentMonthIndex - 1] capitalizedString];
+            
+            return [NSString stringWithFormat:@"%ld\n%@", (long)comps.year, monthText];
+        };
+    }
+    
+    [self.calendar setMenuMonthsView:self.calendarMenuView];
+    [self.calendar setContentView:self.calendarContentView];
+    [self.calendar setDataSource:self];
+    
+    [self createRandomEvents];
+    
+    [self.calendar reloadData];
+
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self.calendar repositionViews];
+}
+
+#pragma mark - JTCalendarDataSource
+
+- (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date
+{
+    NSString *key = [[self dateFormatter] stringFromDate:date];
+    
+    if(eventsByDate[key] && [eventsByDate[key] count] > 0){
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
+{
+    NSString *key = [[self dateFormatter] stringFromDate:date];
+    NSArray *events = eventsByDate[key];
+    
+    NSLog(@"Date: %@ - %ld events", date, [events count]);
+}
+
+- (void)calendarDidLoadPreviousPage
+{
+    NSLog(@"Previous page loaded");
+}
+
+- (void)calendarDidLoadNextPage
+{
+    NSLog(@"Next page loaded");
+}
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    self.cashierContentViewConstraints.constant = MAX(CGRectGetHeight(self.view.frame) + 1,600);
+}
+#pragma mark - Transition examples
+
+- (void)transitionExample
+{
+    CGFloat newHeight = 300;
+    if(self.calendar.calendarAppearance.isWeekMode){
+        newHeight = 75.;
+    }
+    
+    [UIView animateWithDuration:.5
+                     animations:^{
+                         self.calendarContentViewHeight.constant = newHeight;
+                         [self.view layoutIfNeeded];
+                     }];
+    
+    [UIView animateWithDuration:.25
+                     animations:^{
+                         self.calendarContentView.layer.opacity = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         [self.calendar reloadAppearance];
+                         
+                         [UIView animateWithDuration:.25
+                                          animations:^{
+                                              self.calendarContentView.layer.opacity = 1;
+                                          }];
+                     }];
+}
+
+#pragma mark - Fake data
+
+- (NSDateFormatter *)dateFormatter
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"dd-MM-yyyy";
+    }
+    
+    return dateFormatter;
+}
+
+- (void)createRandomEvents
+{
+    eventsByDate = [NSMutableDictionary new];
+    
+    for(int i = 0; i < 30; ++i){
+        // Generate 30 random dates between now and 60 days later
+        NSDate *randomDate = [NSDate dateWithTimeInterval:(rand() % (3600 * 24 * 60)) sinceDate:[NSDate date]];
+        
+        // Use the date as key for eventsByDate
+        NSString *key = [[self dateFormatter] stringFromDate:randomDate];
+        
+        if(!eventsByDate[key]){
+            eventsByDate[key] = [NSMutableArray new];
+        }
+        
+        [eventsByDate[key] addObject:randomDate];
+    }
+}
+
+
+- (void)geCashierListData
+{
+    [SVProgressHUD show];
+    
+    AVRelation *avRelation = [self.menuItemModel objectForKey:@"CashierDetailModelRelationShips"];
+    
+    
+    [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:error.description];
+        } else {
+            for (CashierModel *cashierModel in objects) {
+                NSLog(@"%@",cashierModel.morningPersons);
+                NSLog(@"%@",cashierModel.dinnerPersons);
+                NSLog(@"%@",cashierModel.nightPersons);
+            }
+                [self.dataArray addObjectsFromArray:objects];
+                [SVProgressHUD showSuccessWithStatus:@"加载成功!"];
+                [self.cashierTableView reloadData];
+        }
+    }];
+}
+- (IBAction)hiddenBtnAction:(id)sender {
+    
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+    }completion:^(BOOL finished) {
+        
+    }];
+    
+    self.detailInfoLabel.hidden = !self.detailInfoLabel.hidden;
+}
+
+- (IBAction)addCashierDetailInfoBtnAction{
+    CashierDetailInfoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CashierDetailInfoViewController"];
+//    vc.menuItemModel = self.menuItemModel;
+//    CashierViewController *__weak weakSelf = self;
+//    vc.baseBlock = ^(id content){
+//        CashierViewController *strongSelf = weakSelf;
+//        if (content) {
+//            [self.dataArray addObject:content];
+//        }
+//        [strongSelf.cashierTableView reloadData];
+//    };
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 21)];
+    if (self.dataArray.count > section) {
+        CashierModel *cashierModel = self.dataArray[section];
+        titleLabel.text = [NSDate getTimeStr1Short:[cashierModel.createdAt timeIntervalSince1970]];
+    }
+    
+    
+    titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    titleLabel.backgroundColor = [kRGB(214, 241, 214) colorWithAlphaComponent:.8]; ;
+//    titleLabel.textColor = kRGB(214, 241, 214);
+    return titleLabel;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CashierTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CashierViewControllerCell"];
+    cell.cashierModel = self.dataArray[indexPath.row];
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CashierDetailInfoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CashierDetailInfoViewController"];
+//    vc.menuItemModel = self.menuItemModel;
+    vc.cashierModel = self.dataArray[indexPath.row];
+    
+    CashierViewController *__weak weakSelf = self;
+    vc.baseBlock = ^(id content){
+        CashierViewController *strongSelf = weakSelf;
+    
+        [strongSelf.cashierTableView reloadData];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+@end

@@ -1,0 +1,68 @@
+//
+//  DisburseViewController.m
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/10.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "DisburseViewController.h"
+#import "DisburseDetailViewController.h"
+#import "DisburseTableViewCell.h"
+#import<CoreText/CoreText.h>
+
+@interface DisburseViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *disbuseTableView;
+
+@end
+
+@implementation DisburseViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.dataArray = [@[@[@"宠物宝贝"],@[],@[],@[],@[],@[]] mutableCopy];
+    
+    
+}
+
+#pragma mark
+#pragma mark UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 12;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"DisburseTableViewCell";
+    DisburseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    cell.monthLabel.text = @(indexPath.section).stringValue ;
+
+    return cell;
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

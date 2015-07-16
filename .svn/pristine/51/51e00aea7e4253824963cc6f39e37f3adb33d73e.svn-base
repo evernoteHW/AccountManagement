@@ -1,0 +1,45 @@
+//
+//  CashierNightViewController.m
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/3.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "CashierNightViewController.h"
+#import "EmployeesViewController.h"
+
+
+@interface CashierNightViewController ()
+
+
+
+@end
+
+
+@implementation CashierNightViewController
+
+- (IBAction)selectePersonBtn:(UIButton *)sender {
+    EmployeesViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EmployeesViewController"];
+    vc.baseBlock = ^(id content){
+        self.nightPersonsNameLabel.text = [NSString stringWithFormat:@"%@",content];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.contentInset = UIEdgeInsetsMake(40, 0, 0, 0);
+    
+    self.nightTotalMoneyTextField.text = self.cashierModel.nightTotalMoney ;
+    self.nightPersonsNameLabel.text = self.cashierModel.nightPersons ;
+    self.nightDeviationTextField.text = self.cashierModel.nightDeviation ;
+    self.nightSalesTextField.text = self.cashierModel.nightSales ;
+    self.nightReservedTextField.text = self.cashierModel.nightReservedMoney ;
+    self.nightCommentTextView.text = self.cashierModel.nightComment ;
+    
+}
+
+
+@end

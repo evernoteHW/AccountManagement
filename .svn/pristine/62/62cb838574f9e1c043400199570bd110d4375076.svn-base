@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomDatePickerView">
+            <rect key="frame" x="0.0" y="10" width="600" height="246"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-C8-xwS">
+                    <rect key="frame" x="0.0" y="66" width="600" height="180"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="hTH-Ja-voR"/>
+                    </constraints>
+                    <date key="date" timeIntervalSinceReferenceDate="458574427.47796601">
+                        <!--2015-07-14 13:47:07 +0000-->
+                    </date>
+                </datePicker>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgJ-66-tEg">
+                    <rect key="frame" x="500" y="0.0" width="100" height="35"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Zkc-2c-8CF"/>
+                        <constraint firstAttribute="width" constant="100" id="ZxD-HY-afG"/>
+                    </constraints>
+                    <state key="normal" title="隐藏">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Hoq-C8-xwS" secondAttribute="trailing" id="4nN-gU-AxI"/>
+                <constraint firstItem="CgJ-66-tEg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="C27-DV-uDX"/>
+                <constraint firstAttribute="bottom" secondItem="Hoq-C8-xwS" secondAttribute="bottom" id="mAF-zr-mG0"/>
+                <constraint firstAttribute="trailing" secondItem="CgJ-66-tEg" secondAttribute="trailing" id="uo8-On-x8M"/>
+                <constraint firstItem="Hoq-C8-xwS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v1D-aD-jlU"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="325" y="487"/>
+        </view>
+    </objects>
+</document>

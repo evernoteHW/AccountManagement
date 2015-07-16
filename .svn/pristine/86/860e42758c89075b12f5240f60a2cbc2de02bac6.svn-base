@@ -1,0 +1,24 @@
+//
+//  CashierNightViewController.h
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/3.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "BaseTableViewController.h"
+
+@interface CashierNightViewController : BaseTableViewController
+
+
+@property (weak, nonatomic) IBOutlet UILabel *nightPersonsNameLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *nightDeviationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nightSalesTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nightTotalMoneyTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nightReservedTextField;
+@property (weak, nonatomic) IBOutlet UITextView *nightCommentTextView;
+
+@property (nonatomic, strong) CashierModel *cashierModel;
+
+@end

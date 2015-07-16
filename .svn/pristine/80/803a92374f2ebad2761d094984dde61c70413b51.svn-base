@@ -1,0 +1,41 @@
+//
+//  CashierDinnnerViewController.m
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/3.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "CashierDinnnerViewController.h"
+#import "EmployeesViewController.h"
+
+@interface CashierDinnnerViewController ()
+
+
+
+@end
+
+@implementation CashierDinnnerViewController
+
+- (IBAction)selectePersonBtn:(UIButton *)sender {
+    EmployeesViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EmployeesViewController"];
+    vc.baseBlock = ^(id content){
+        self.dinnnerPersonsNameLabel.text = [NSString stringWithFormat:@"%@",content];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.contentInset = UIEdgeInsetsMake(40, 0, 0, 0);
+    
+    self.dinnnerTotalMoneyTextField.text = self.cashierModel.dinnerTotalMoney ;
+    self.dinnnerPersonsNameLabel.text = self.cashierModel.dinnerPersons ;
+    self.dinnnerDeviationTextField.text = self.cashierModel.dinnerDeviation;
+    self.dinnnerSalesTextField.text = self.cashierModel.dinnerSales ;
+    self.dinnnerReservedTextField.text = self.cashierModel.dinnerReservedMoney;
+    self.dinnerCommentTextView.text = self.cashierModel.dinnerComment ;
+}
+@end

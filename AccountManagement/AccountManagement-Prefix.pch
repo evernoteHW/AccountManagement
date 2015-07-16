@@ -1,0 +1,54 @@
+//
+//  PWDManage-Prefix.pch
+//  AccountManagement
+//
+//  Created by WeiHu on 15/6/10.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#ifndef AccountManagement_PWDManage_Prefix_pch
+#define AccountManagement_PWDManage_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+    #import "MagicalRecord.h"
+    #import "NetworkManager.h"
+    #import "SWTableViewCell.h"
+    #import "UIColor+Extension.h"
+    #import "AVOSCloud.h"
+    #import "SVProgressHUD.h"
+    #import "BaseDataModel.h"
+    #import "NSDate+UIUtils.h"
+
+    #import <LocalAuthentication/LocalAuthentication.h>
+    #import "JTCalendar.h"
+
+#import "UserLoginModel.h"
+#import "CustomPickerView.h"
+
+//Cashie
+
+#import "CashierModel.h"
+
+#import "MenuItemModel.h"
+
+#import "OrderInfoModel.h"
+
+#import "PopoverView.h"
+
+//Notification
+
+static NSString * const kAutoLoginInNotification = @"AutoLoginInNotification";                   // 协议错误，错误码-1
+
+static NSString * const kUserLoginOutNotification = @"kUserLoginOutNotification";                   // 协议错误，错误码-1
+
+static NSString * const kUSERNAME = @"USERNAME";
+
+static NSString * const kUSERPASSWARD = @"USERPASSWARD";
+
+
+#define kOrderInfoModelRelationShips @"OrderInfoModelRelationShips"
+
+#define kRGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+
+#endif

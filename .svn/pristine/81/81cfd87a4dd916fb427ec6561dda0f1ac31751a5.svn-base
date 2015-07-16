@@ -1,0 +1,22 @@
+//
+//  CashierMorningViewController.h
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/3.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "BaseTableViewController.h"
+
+@interface CashierMorningViewController : BaseTableViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *morningPersonsNameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *morningDeviationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *morningSalesTextField;
+@property (weak, nonatomic) IBOutlet UITextField *morningTotalMoneyTextField;
+@property (weak, nonatomic) IBOutlet UITextField *morningReservedTextField;
+
+@property (weak, nonatomic) IBOutlet UITextView *morningCommentTextView;
+@property (nonatomic, strong) CashierModel *cashierModel;
+
+@end

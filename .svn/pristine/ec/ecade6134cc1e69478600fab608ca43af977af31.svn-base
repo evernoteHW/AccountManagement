@@ -1,0 +1,42 @@
+
+//
+//  CashierMorningViewController.m
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/3.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "CashierMorningViewController.h"
+#import "EmployeesViewController.h"
+
+@interface CashierMorningViewController ()
+
+@end
+
+@implementation CashierMorningViewController
+
+- (IBAction)selectePersonBtn:(UIButton *)sender {
+    EmployeesViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EmployeesViewController"];
+    vc.baseBlock = ^(id content){
+        self.morningPersonsNameLabel.text = [NSString stringWithFormat:@"%@",content];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.contentInset = UIEdgeInsetsMake(40, 0, 0, 0);
+    if (self.cashierModel) {
+        
+        self.morningTotalMoneyTextField.text = self.cashierModel.morningTotalMoney ;
+        self.morningPersonsNameLabel.text = self.cashierModel.morningPersons;
+        self.morningDeviationTextField.text = self.cashierModel.morningDeviation ;
+        self.morningSalesTextField.text = self.cashierModel.morningSales ;
+        self.morningReservedTextField.text = self.cashierModel.morningReservedMoney ;
+        self.morningCommentTextView.text = self.cashierModel.morningComment ;
+        
+    }
+
+}
+@end

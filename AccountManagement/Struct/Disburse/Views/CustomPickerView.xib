@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomPickerView">
+            <rect key="frame" x="0.0" y="-2" width="600" height="245"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI9-FW-OA3">
+                    <rect key="frame" x="0.0" y="83" width="600" height="162"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="162" id="rDi-YJ-1lm"/>
+                    </constraints>
+                </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPS-e9-bCy">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="AnB-wm-Uu0"/>
+                        <constraint firstAttribute="height" constant="35" id="Sbv-d5-J72"/>
+                    </constraints>
+                    <state key="normal" title="编辑">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dZ-Fk-pXe">
+                    <rect key="frame" x="500" y="0.0" width="100" height="35"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="EVr-R0-a81"/>
+                        <constraint firstAttribute="width" constant="100" id="X1H-wk-AvW"/>
+                    </constraints>
+                    <state key="normal" title="隐藏">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="hidenBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="m3t-JL-kvm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hI9-FW-OA3" secondAttribute="trailing" id="21n-sP-G1V"/>
+                <constraint firstItem="7dZ-Fk-pXe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DlH-UF-6rE"/>
+                <constraint firstItem="hI9-FW-OA3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IOf-xA-xw7"/>
+                <constraint firstAttribute="bottom" secondItem="hI9-FW-OA3" secondAttribute="bottom" id="QCl-cV-fvl"/>
+                <constraint firstAttribute="trailing" secondItem="7dZ-Fk-pXe" secondAttribute="trailing" id="XwY-Ha-GRh"/>
+                <constraint firstItem="DPS-e9-bCy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c9i-kW-hOR"/>
+                <constraint firstItem="DPS-e9-bCy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="m3a-TJ-xAW"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="pickerView" destination="hI9-FW-OA3" id="1p0-0r-RZU"/>
+            </connections>
+            <point key="canvasLocation" x="325" y="470.5"/>
+        </view>
+    </objects>
+</document>

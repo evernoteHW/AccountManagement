@@ -1,0 +1,123 @@
+//
+//  CashierDetailInfoViewController.m
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/3.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import "CashierDetailInfoViewController.h"
+#import "CashierMorningViewController.h"
+#import "CashierDinnnerViewController.h"
+#import "CashierNightViewController.h"
+
+@interface CashierDetailInfoViewController  ()
+{
+    UIViewController *selectedViewController;
+    CashierMorningViewController *firstController;
+    CashierDinnnerViewController *secondController;
+    CashierNightViewController *thirdController;
+    
+}
+@property (weak, nonatomic) IBOutlet UISegmentedControl *switchSegmentCtrl;
+
+@end
+
+@implementation CashierDetailInfoViewController
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    thirdController = (CashierNightViewController *)[self storyBoardWithIdentifier:@"CashierNightViewController"];
+    [self addChildViewController:thirdController];
+    thirdController.cashierModel = self.cashierModel;
+    [self.view addSubview:thirdController.view];
+    
+    secondController = (CashierDinnnerViewController *)[self storyBoardWithIdentifier:@"CashierDinnnerViewController"];
+    secondController.cashierModel = self.cashierModel;
+    [self addChildViewController:secondController];
+    [self.view addSubview:secondController.view];
+    
+    firstController = (CashierMorningViewController *)[self storyBoardWithIdentifier:@"CashierMorningViewController"];
+    firstController.cashierModel = self.cashierModel;
+    [self addChildViewController:firstController];
+    [self.view addSubview:firstController.view];
+    
+    selectedViewController = firstController;
+    
+    [self.view bringSubviewToFront:self.switchSegmentCtrl];
+
+}
+- (IBAction)saveDetailInfoBtnAction:(UIButton *)sender {
+    
+    NSInteger flagtype = 0;
+    if (self.cashierModel) {
+        flagtype = 0;
+    }else
+    {
+        flagtype = 1;
+        self.cashierModel = [CashierModel BD_Create];
+    }
+    //早
+    self.cashierModel.morningTotalMoney = firstController.morningTotalMoneyTextField.text;
+    self.cashierModel.morningPersons = firstController.morningPersonsNameLabel.text;
+    self.cashierModel.morningDeviation = firstController.morningDeviationTextField.text;
+    self.cashierModel.morningSales = firstController.morningSalesTextField.text;
+    self.cashierModel.morningReservedMoney = firstController.morningReservedTextField.text;
+    self.cashierModel.morningComment = firstController.morningCommentTextView.text;
+    
+    //中
+    self.cashierModel.dinnerTotalMoney = secondController.dinnnerTotalMoneyTextField.text;
+    self.cashierModel.dinnerPersons = secondController.dinnnerPersonsNameLabel.text;
+    self.cashierModel.dinnerDeviation = secondController.dinnnerDeviationTextField.text;
+    self.cashierModel.dinnerSales = secondController.dinnnerSalesTextField.text;
+    self.cashierModel.dinnerReservedMoney = secondController.dinnnerReservedTextField.text;
+    self.cashierModel.dinnerComment = secondController.dinnerCommentTextView.text;
+    
+    //晚
+    self.cashierModel.nightTotalMoney = thirdController.nightTotalMoneyTextField.text;
+    self.cashierModel.nightPersons = thirdController.nightPersonsNameLabel.text;
+    self.cashierModel.nightDeviation = thirdController.nightDeviationTextField.text;
+    self.cashierModel.nightSales = thirdController.nightSalesTextField.text;
+    self.cashierModel.nightReservedMoney = thirdController.nightReservedTextField.text;
+    self.cashierModel.nightComment = thirdController.nightCommentTextView.text;
+    
+
+    [self.cashierModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        if (succeeded) {
+            if (flagtype != 0) {
+                self.menuItemModel.relationFriends = [self.menuItemModel relationforKey:@"CashierDetailModelRelationShips"];
+                [self.menuItemModel.relationFriends addObject:self.cashierModel];
+            }
+            [self.menuItemModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    if (self.baseBlock) {
+                        self.baseBlock(self.cashierModel);
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }
+    }];
+
+    
+}
+
+- (IBAction)segmentAction:(UISegmentedControl *)sender {
+    
+    [self transitionFromViewController:selectedViewController
+                      toViewController:self.childViewControllers[self.childViewControllers.count - 1 -  sender.selectedSegmentIndex]
+                              duration:0
+                               options:UIViewAnimationOptionLayoutSubviews
+                            animations:^{
+                                // NOPS；
+                                
+                            }
+                            completion:^(BOOL finished) {
+                                selectedViewController = self.childViewControllers[self.childViewControllers.count - 1  - sender.selectedSegmentIndex];
+                                [self.view bringSubviewToFront:self.switchSegmentCtrl];
+                            }];
+}
+
+@end

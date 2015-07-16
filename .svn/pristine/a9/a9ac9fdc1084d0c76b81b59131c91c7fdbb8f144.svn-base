@@ -1,0 +1,38 @@
+//
+//  CustomPickerView.h
+//  AccountManagement
+//
+//  Created by WeiHu on 15/7/14.
+//  Copyright (c) 2015年 WeiHu. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+typedef void(^EditBlcok)();
+typedef void(^HiddenBlcok)();
+typedef void(^SelectedBlcok)();
+
+@interface CustomPickerView : UIView <UIPickerViewDelegate,UIPickerViewDataSource>
+{
+    @private
+        NSArray *tempArray;
+}
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIButton *editBtn;
+@property (weak, nonatomic) IBOutlet UIButton *hiddenBtn;
+@property (strong, nonatomic) UIView *pickerSubview;
+
+@property (nonatomic, strong) NSLayoutConstraint *topConstraint;
+@property (copy, nonatomic) NSDictionary *dataDic;
+
+@property (copy, nonatomic) EditBlcok editBlcok;
+@property (copy, nonatomic) HiddenBlcok hiddenBlcok;
+@property (copy, nonatomic) SelectedBlcok selectedBlcok;
+
+
++ (void)showInView:(UIView *)pickerSubview dataDic:(NSDictionary *)dataDic editBlcok:(EditBlcok )editBlcok hiddenBlcok:(HiddenBlcok)hiddenBlcok selectedBlcok:(SelectedBlcok)selectedBlcok;
+
+- (IBAction)editBtnAction:(UIButton *)sender;
+- (IBAction)hidenBtnAction:(UIButton *)sender;
+
+@end
