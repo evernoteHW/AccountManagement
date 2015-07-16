@@ -12,6 +12,7 @@ typedef void(^BaseBlock)(id);
 
 @interface BaseTableViewController : UITableViewController
 @property (nonatomic, copy) BaseBlock baseBlock;
+@property (nonatomic, strong) MenuItemModel *menuItemModel;
 
 - (UIViewController *)storyBoardWithIdentifier:(NSString *)identifier;
 

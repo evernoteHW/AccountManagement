@@ -36,11 +36,11 @@
 
 - (void)getContactPListData
 {
-    [SVProgressHUD show];
+
     AVRelation *avRelation = [self.menuItemModel objectForKey:@"AddressBookEntityRelationShips2"];
     [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-            [SVProgressHUD showErrorWithStatus:error.description];
+
         } else {
             NSMutableArray *smallerArray = nil;
             for (AddressBookDetailInfo *addressBookDetailInfo in objects) {
@@ -63,7 +63,7 @@
               
             }
             [self.contactPlistTableView reloadData];
-            [SVProgressHUD showSuccessWithStatus:@"加载成功!"];
+
         }
     }];
 }

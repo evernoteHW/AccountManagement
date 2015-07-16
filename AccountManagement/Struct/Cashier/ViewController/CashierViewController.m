@@ -11,17 +11,20 @@
 #import "CashierTableViewCell.h"
 #import "NSDate+UIUtils.h"
 
-@interface CashierViewController ()<JTCalendarDataSource>{
-    NSMutableDictionary *eventsByDate;
+
+@interface CashierViewController ()<JTCalendarDelegate>{
+//    NSMutableDictionary *eventsByDate;
+    
+    NSMutableDictionary *_eventsByDate;
+    
+    NSDate *_dateSelected;
 }
 
-@property (strong, nonatomic) JTCalendar *calendar;
-@property (weak, nonatomic) IBOutlet UITableView *cashierTableView;
+@property (strong, nonatomic) JTCalendarManager *calendarManager;
 @property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView;
-@property (weak, nonatomic) IBOutlet JTCalendarContentView *calendarContentView;
+@property (weak, nonatomic) IBOutlet JTHorizontalCalendarView *calendarContentView;
 @property (weak, nonatomic) IBOutlet UIView *detailInfoLabel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cashierContentViewConstraints;
 @end
 
@@ -32,124 +35,142 @@
     [super viewDidLoad];
 //    [self geCashierListData];
     
-    self.calendar = [JTCalendar new];
-    
-    // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
-    // Or you will have to call reloadAppearance
-    {
-        self.calendar.calendarAppearance.calendar.firstWeekday = 2; // Sunday == 1, Saturday == 7
-        self.calendar.calendarAppearance.dayCircleRatio = 9. / 10.;
-        self.calendar.calendarAppearance.ratioContentMenu = 2.;
-        self.calendar.calendarAppearance.focusSelectedDayChangeMode = YES;
-        //163
-//        self.calendar.calendarAppearance.dayBackgroundColor = [UIColor colorWithR:110 G:149 B:255];
-        self.calendar.calendarAppearance.dayBackgroundColor = [UIColor colorWithR:255 G:127 B:49];
-        self.calendar.calendarAppearance.dayDotColor = [UIColor redColor];
-        
-        // Customize the text for each month
-        self.calendar.calendarAppearance.monthBlock = ^NSString *(NSDate *date, JTCalendar *jt_calendar){
-            NSCalendar *calendar = jt_calendar.calendarAppearance.calendar;
-            NSDateComponents *comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth fromDate:date];
-            NSInteger currentMonthIndex = comps.month;
-            
-            static NSDateFormatter *dateFormatter;
-            if(!dateFormatter){
-                dateFormatter = [NSDateFormatter new];
-                dateFormatter.timeZone = jt_calendar.calendarAppearance.calendar.timeZone;
-            }
-            
-            while(currentMonthIndex <= 0){
-                currentMonthIndex += 12;
-            }
-            
-            NSString *monthText = [[dateFormatter standaloneMonthSymbols][currentMonthIndex - 1] capitalizedString];
-            
-            return [NSString stringWithFormat:@"%ld\n%@", (long)comps.year, monthText];
-        };
-    }
-    
-    [self.calendar setMenuMonthsView:self.calendarMenuView];
-    [self.calendar setContentView:self.calendarContentView];
-    [self.calendar setDataSource:self];
-    
+   
+    _calendarManager = [JTCalendarManager new];
+    _calendarManager.delegate = self;
+     _calendarMenuView.contentRatio = .75;
+    // Generate random events sort by date using a dateformatter for the demonstration
     [self createRandomEvents];
     
-    [self.calendar reloadData];
-
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [self.calendar repositionViews];
-}
-
-#pragma mark - JTCalendarDataSource
-
-- (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date
-{
-    NSString *key = [[self dateFormatter] stringFromDate:date];
+    [_calendarManager setMenuView:_calendarMenuView];
+    [_calendarManager setContentView:_calendarContentView];
+    [_calendarManager setDate:[NSDate date]];
     
-    if(eventsByDate[key] && [eventsByDate[key] count] > 0){
-        return YES;
+}
+
+#pragma mark - CalendarManager delegate
+
+// Exemple of implementation of prepareDayView method
+// Used to customize the appearance of dayView
+- (void)calendar:(JTCalendarManager *)calendar prepareDayView:(JTCalendarDayView *)dayView
+{
+    dayView.hidden = NO;
+    
+    // Other month
+    if([dayView isFromAnotherMonth]){
+        dayView.hidden = YES;
+    }
+    // Today
+    else if([_calendarManager.dateHelper date:[NSDate date] isTheSameDayThan:dayView.date]){
+        dayView.circleView.hidden = NO;
+        dayView.circleView.backgroundColor = [UIColor whiteColor];
+        dayView.dotView.backgroundColor = [UIColor whiteColor];
+        dayView.textLabel.textColor = UIColorFromRGB(0xFF7F31);
+    }
+    // Selected date
+    else if(_dateSelected && [_calendarManager.dateHelper date:_dateSelected isTheSameDayThan:dayView.date]){
+        dayView.circleView.hidden = NO;
+        dayView.circleView.backgroundColor = [UIColor redColor];
+        dayView.dotView.backgroundColor = [UIColor whiteColor];
+        dayView.textLabel.textColor = [UIColor whiteColor];
+    }
+    // Another day of the current month
+    else{
+        dayView.circleView.hidden = YES;
+        dayView.dotView.backgroundColor = [UIColor redColor];
+        dayView.textLabel.textColor = [UIColor whiteColor];
     }
     
-    return NO;
+    if([self haveEventForDay:dayView.date]){
+        dayView.dotView.hidden = NO;
+    }
+    else{
+        dayView.dotView.hidden = YES;
+    }
 }
 
-- (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
+- (void)calendar:(JTCalendarManager *)calendar didTouchDayView:(JTCalendarDayView *)dayView
 {
-    NSString *key = [[self dateFormatter] stringFromDate:date];
-    NSArray *events = eventsByDate[key];
+    _dateSelected = dayView.date;
     
-    NSLog(@"Date: %@ - %ld events", date, [events count]);
-}
-
-- (void)calendarDidLoadPreviousPage
-{
-    NSLog(@"Previous page loaded");
-}
-
-- (void)calendarDidLoadNextPage
-{
-    NSLog(@"Next page loaded");
-}
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
+    // Animation for the circleView
+    dayView.circleView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.1, 0.1);
+    [UIView transitionWithView:dayView
+                      duration:.3
+                       options:0
+                    animations:^{
+                        dayView.circleView.transform = CGAffineTransformIdentity;
+                        [_calendarManager reload];
+                    } completion:nil];
     
-    self.cashierContentViewConstraints.constant = MAX(CGRectGetHeight(self.view.frame) + 1,600);
+    
+    // Load the previous or next page if touch a day from another month
+    
+    if(![_calendarManager.dateHelper date:_calendarContentView.date isTheSameMonthThan:dayView.date]){
+        if([_calendarContentView.date compare:dayView.date] == NSOrderedAscending){
+            [_calendarContentView loadNextPageWithAnimation];
+        }
+        else{
+            [_calendarContentView loadPreviousPageWithAnimation];
+        }
+    }
 }
-#pragma mark - Transition examples
 
-- (void)transitionExample
+#pragma mark - Date selection
+
+#pragma mark - Views customization
+
+- (UIView *)calendarBuildMenuItemView:(JTCalendarManager *)calendar
 {
-    CGFloat newHeight = 300;
-    if(self.calendar.calendarAppearance.isWeekMode){
-        newHeight = 75.;
+    UILabel *label = [UILabel new];
+    
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont fontWithName:@"Avenir-Medium" size:16];
+    
+    return label;
+}
+
+- (void)calendar:(JTCalendarManager *)calendar prepareMenuItemView:(UILabel *)menuItemView date:(NSDate *)date
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"MMMM yyyy";
+        
+        dateFormatter.locale = _calendarManager.dateHelper.calendar.locale;
+        dateFormatter.timeZone = _calendarManager.dateHelper.calendar.timeZone;
     }
     
-    [UIView animateWithDuration:.5
-                     animations:^{
-                         self.calendarContentViewHeight.constant = newHeight;
-                         [self.view layoutIfNeeded];
-                     }];
+    menuItemView.text = [dateFormatter stringFromDate:date];
+}
+
+- (UIView<JTCalendarWeekDay> *)calendarBuildWeekDayView:(JTCalendarManager *)calendar
+{
+    JTCalendarWeekDayView *view = [JTCalendarWeekDayView new];
     
-    [UIView animateWithDuration:.25
-                     animations:^{
-                         self.calendarContentView.layer.opacity = 0;
-                     }
-                     completion:^(BOOL finished) {
-                         [self.calendar reloadAppearance];
-                         
-                         [UIView animateWithDuration:.25
-                                          animations:^{
-                                              self.calendarContentView.layer.opacity = 1;
-                                          }];
-                     }];
+    for(UILabel *label in view.dayViews){
+        label.textColor = [UIColor blackColor];
+        label.font = [UIFont fontWithName:@"Avenir-Light" size:14];
+    }
+    
+    return view;
+}
+
+- (UIView<JTCalendarDay> *)calendarBuildDayView:(JTCalendarManager *)calendar
+{
+    JTCalendarDayView *view = [JTCalendarDayView new];
+    
+    view.textLabel.font = [UIFont fontWithName:@"Avenir-Light" size:13];
+    
+    view.circleRatio = .8;
+    view.dotRatio = 1. / .9;
+    
+    return view;
 }
 
 #pragma mark - Fake data
 
+// Used only to have a key for _eventsByDate
 - (NSDateFormatter *)dateFormatter
 {
     static NSDateFormatter *dateFormatter;
@@ -161,9 +182,21 @@
     return dateFormatter;
 }
 
+- (BOOL)haveEventForDay:(NSDate *)date
+{
+    NSString *key = [[self dateFormatter] stringFromDate:date];
+    
+    if(_eventsByDate[key] && [_eventsByDate[key] count] > 0){
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
 - (void)createRandomEvents
 {
-    eventsByDate = [NSMutableDictionary new];
+    _eventsByDate = [NSMutableDictionary new];
     
     for(int i = 0; i < 30; ++i){
         // Generate 30 random dates between now and 60 days later
@@ -172,108 +205,14 @@
         // Use the date as key for eventsByDate
         NSString *key = [[self dateFormatter] stringFromDate:randomDate];
         
-        if(!eventsByDate[key]){
-            eventsByDate[key] = [NSMutableArray new];
+        if(!_eventsByDate[key]){
+            _eventsByDate[key] = [NSMutableArray new];
         }
         
-        [eventsByDate[key] addObject:randomDate];
+        [_eventsByDate[key] addObject:randomDate];
     }
 }
 
 
-- (void)geCashierListData
-{
-    [SVProgressHUD show];
-    
-    AVRelation *avRelation = [self.menuItemModel objectForKey:@"CashierDetailModelRelationShips"];
-    
-    
-    [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error) {
-            [SVProgressHUD showErrorWithStatus:error.description];
-        } else {
-            for (CashierModel *cashierModel in objects) {
-                NSLog(@"%@",cashierModel.morningPersons);
-                NSLog(@"%@",cashierModel.dinnerPersons);
-                NSLog(@"%@",cashierModel.nightPersons);
-            }
-                [self.dataArray addObjectsFromArray:objects];
-                [SVProgressHUD showSuccessWithStatus:@"加载成功!"];
-                [self.cashierTableView reloadData];
-        }
-    }];
-}
-- (IBAction)hiddenBtnAction:(id)sender {
-    
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        
-    }completion:^(BOOL finished) {
-        
-    }];
-    
-    self.detailInfoLabel.hidden = !self.detailInfoLabel.hidden;
-}
-
-- (IBAction)addCashierDetailInfoBtnAction{
-    CashierDetailInfoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CashierDetailInfoViewController"];
-//    vc.menuItemModel = self.menuItemModel;
-//    CashierViewController *__weak weakSelf = self;
-//    vc.baseBlock = ^(id content){
-//        CashierViewController *strongSelf = weakSelf;
-//        if (content) {
-//            [self.dataArray addObject:content];
-//        }
-//        [strongSelf.cashierTableView reloadData];
-//    };
-    [self.navigationController pushViewController:vc animated:YES];
-    
-}
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 21)];
-    if (self.dataArray.count > section) {
-        CashierModel *cashierModel = self.dataArray[section];
-        titleLabel.text = [NSDate getTimeStr1Short:[cashierModel.createdAt timeIntervalSince1970]];
-    }
-    
-    
-    titleLabel.font = [UIFont systemFontOfSize:14.0f];
-    titleLabel.backgroundColor = [kRGB(214, 241, 214) colorWithAlphaComponent:.8]; ;
-//    titleLabel.textColor = kRGB(214, 241, 214);
-    return titleLabel;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 3;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.dataArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CashierTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CashierViewControllerCell"];
-    cell.cashierModel = self.dataArray[indexPath.row];
-    
-    return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CashierDetailInfoViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CashierDetailInfoViewController"];
-//    vc.menuItemModel = self.menuItemModel;
-    vc.cashierModel = self.dataArray[indexPath.row];
-    
-    CashierViewController *__weak weakSelf = self;
-    vc.baseBlock = ^(id content){
-        CashierViewController *strongSelf = weakSelf;
-    
-        [strongSelf.cashierTableView reloadData];
-    };
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 @end

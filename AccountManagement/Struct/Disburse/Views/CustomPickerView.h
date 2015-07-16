@@ -36,9 +36,13 @@ typedef void(^SelectedBlcok)(NSString *,NSString *);
 
 @property (strong, nonatomic) UIView *cusomtPickerBgView;
 
-+ (id)showInView:(UIView *)pickerSubview dataDic:(NSDictionary *)dataDic imageDic:(NSDictionary *)imageDic editBlcok:(EditBlcok )editBlcok hiddenBlcok:(HiddenBlcok)hiddenBlcok selectedBlcok:(SelectedBlcok)selectedBlcok;
++ (CustomPickerView *)shareInstance;
+
++ (id)showCustomPickerWitheDataDic:(NSDictionary *)dataDic imageDic:(NSDictionary *)imageDic editBlcok:(EditBlcok )editBlcok hiddenBlcok:(HiddenBlcok)hiddenBlcok selectedBlcok:(SelectedBlcok)selectedBlcok;
 
 - (IBAction)editBtnAction:(UIButton *)sender;
 - (IBAction)hidenBtnAction:(UIButton *)sender;
+- (void)showCustomPickerView;
+- (void)hiddenCustomPickerView;
 
 @end

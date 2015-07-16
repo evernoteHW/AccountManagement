@@ -8,8 +8,9 @@
 
 #import "DisburseDetailViewController.h"
 #import "CustomDatePickerView.h"
+#import "CustomPickerWordsView.h"
 
-@interface DisburseDetailViewController () <UITextFieldDelegate>
+@interface DisburseDetailViewController () <UITextFieldDelegate,UITextViewDelegate>
 {
     NSArray *titleArray;
     UIButton *hiddenBtn;
@@ -49,11 +50,16 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.moneyTextField resignFirstResponder];
+    [self.view endEditing:YES];
+    [[CustomPickerView shareInstance] removeFromSuperview];
+    [[CustomPickerWordsView shareInstance] removeFromSuperview];
+    [hiddenBtn removeFromSuperview];
+    [datePicker removeFromSuperview];
     
     switch (indexPath.row) {
         case 0:
         {
+        
             [self.moneyTextField becomeFirstResponder];
         }
             break;
@@ -65,18 +71,13 @@
               @"行车交通":@[@"公共交通",@"打车租车",@"私家车费用"],
                                        @"衣服饰品":@[@"衣服裤子",@"鞋帽包包",@"化妆品"]};
             
-            NSDictionary *imageDic =  @{@"衣服饰品":@[@"衣服裤子",@"鞋帽包包",@"化妆品"],
-                                        @"食品酒水":@[@"早午晚餐",@"烟酒茶",@"水果零食"],
-                                        @"居家物业":@[@"日常用品",@"水电煤气",@"房租",@"物业管理",@"维修保养"],
-                                        @"行车交通":@[@"公共交通",@"打车租车",@"私家车费用"],
-                                        @"衣服饰品":@[@"衣服裤子",@"鞋帽包包",@"化妆品"]};
-            
-            
-            [customPickerView removeFromSuperview];
-            customPickerView.hidden = YES;
-            customPickerView = nil;
-            
-            customPickerView = [CustomPickerView showInView:[UIApplication sharedApplication].keyWindow dataDic:titleDic imageDic:imageDic editBlcok:^{
+        NSDictionary *imageDic = @{@"icon_yfsp":@[@"d_sfjj",@"d_shyp",@"d_slgzcl"],
+                   @"d_muc":@[@"d_tlrjq",@"d_wanj",@"d_wj"],
+                   @"d_nf":@[@"d_wysb",@"d_xtxt",@"d_yx",@"d_zg",@"d_zs"],
+                   @"d_qcp":@[@"d_zszh",@"d_zxmr",@"defaultIcon"]
+                                   };
+
+            [CustomPickerView showCustomPickerWitheDataDic:titleDic imageDic:imageDic editBlcok:^{
                 
             } hiddenBlcok:^{
                 
@@ -89,54 +90,36 @@
             break;
         case 2:
         {
-            NSDictionary *titleDic =  @{@"衣服饰品":@[@"衣服裤子",@"鞋帽包包",@"化妆品"],
-                                        @"食品酒水":@[@"早午晚餐",@"烟酒茶",@"水果零食"],
-                                        @"居家物业":@[@"日常用品",@"水电煤气",@"房租",@"物业管理",@"维修保养"],
-                                        @"行车交通":@[@"公共交通",@"打车租车",@"私家车费用"],
-                                        @"衣服饰品":@[@"衣服裤子",@"鞋帽包包",@"化妆品"]};
-            
-            NSDictionary *imageDic =  @{@"衣服饰品":@[@"衣服裤子",@"鞋帽包包",@"化妆品"],
-                                        @"食品酒水":@[@"早午晚餐",@"烟酒茶",@"水果零食"],
-                                        @"居家物业":@[@"日常用品",@"水电煤气",@"房租",@"物业管理",@"维修保养"],
-                                        @"行车交通":@[@"公共交通",@"打车租车",@"私家车费用"],
-                                        @"衣服饰品":@[@"衣服裤子",@"鞋帽包包",@"化妆品"]};
-            
-            
-            [customPickerView removeFromSuperview];
-            customPickerView.hidden = YES;
-            customPickerView = nil;
-            
-            customPickerView = [CustomPickerView showInView:[UIApplication sharedApplication].keyWindow dataDic:titleDic imageDic:imageDic editBlcok:^{
+
+            NSArray *arr = @[@[@"icon_yfsp",@"现金(CNY)"],@[@"d_sfjj",@"信用卡(CNY)"],@[@"d_shyp",@"银行卡(CNY)"]];
+                             
+            [CustomPickerWordsView showCustomPickerWithDataArray:arr editBlcok:^{
                 
             } hiddenBlcok:^{
                 
             } selectedBlcok:^(NSString *menuItem, NSString *childItem) {
-                
-                self.moneyTypeLabel.text = [NSString stringWithFormat:@"%@>%@",menuItem,childItem];
+                self.moneyTypeLabel.text = menuItem;
             }];
-
+  
         }
             break;
         case 3:
         {
             
-            [customPickerView removeFromSuperview];
-            customPickerView.hidden = YES;
-            customPickerView = nil;
-            
             
             if (hiddenBtn == nil) {
                 hiddenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
                 hiddenBtn.backgroundColor = [UIColor blackColor];
-                [hiddenBtn setTitle:@"隐藏" forState:UIControlStateNormal];
                 hiddenBtn.frame = CGRectMake(self.view.frame.size.width - 60, self.view.frame.size.height, 60, 35);
+                [hiddenBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
                 [hiddenBtn addTarget:self action:@selector(hiddenBtnAction) forControlEvents:UIControlEventTouchUpInside];
             }
             [self.view addSubview:hiddenBtn];
             
             if (datePicker == nil) {
                 datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height + 60, self.view.frame.size.width, 200)];
-                datePicker.backgroundColor = [UIColor whiteColor];
+                datePicker.backgroundColor = [UIColor colorWithR:110 G:149 B:255];
+
                 [datePicker setTimeZone:[NSTimeZone timeZoneWithName:@"zh_Hans_CN"]];
                 
                 [datePicker addTarget:self action:@selector(datePickerAction:) forControlEvents:UIControlEventValueChanged];
@@ -154,12 +137,27 @@
             break;
     }
 }
-
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [[CustomPickerView shareInstance] removeFromSuperview];
+    [[CustomPickerWordsView shareInstance] removeFromSuperview];
+    [hiddenBtn removeFromSuperview];
+    [datePicker removeFromSuperview];
+}
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
 
     return YES;
 }
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [[CustomPickerView shareInstance] removeFromSuperview];
+    [[CustomPickerWordsView shareInstance] removeFromSuperview];
+    [hiddenBtn removeFromSuperview];
+    [datePicker removeFromSuperview];
+}
+
 - (void)datePickerAction:(UIDatePicker *)piker
 {
     self.timeLabel.text = [NSDate getTimeStr1:[piker.date timeIntervalSince1970]];
@@ -179,23 +177,20 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
-    
-    [customPickerView removeFromSuperview];
-    customPickerView.hidden = YES;
-    customPickerView = nil;
-    
+
     [hiddenBtn removeFromSuperview];
     [datePicker removeFromSuperview];
     
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [self.view endEditing:YES];
+    [[CustomPickerView shareInstance] removeFromSuperview];
+    [[CustomPickerWordsView shareInstance] removeFromSuperview];
     [hiddenBtn removeFromSuperview];
     [datePicker removeFromSuperview];
     
-    [customPickerView removeFromSuperview];
-    customPickerView.hidden = YES;
-    customPickerView = nil;
+ 
     
 }
 - (void)didReceiveMemoryWarning {

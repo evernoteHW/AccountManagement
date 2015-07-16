@@ -30,10 +30,10 @@
     
     [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-            [SVProgressHUD showErrorWithStatus:error.description];
+
         } else {
             [self.dataArray addObjectsFromArray:objects];
-            [SVProgressHUD showSuccessWithStatus:@"加载成功!"];
+
             [self.orderTableView reloadData];
         }
     }];

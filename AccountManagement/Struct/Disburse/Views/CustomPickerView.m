@@ -9,41 +9,49 @@
 
 #import "CustomPickerView.h"
 
+static CustomPickerView *shareInstance = nil;
+
+#define CustomPickerViewHeight   197
+
 @implementation CustomPickerView
 
-+ (id)showInView:(UIView *)pickerSubview dataDic:(NSDictionary *)dataDic imageDic:(NSDictionary *)imageDic editBlcok:(EditBlcok )editBlcok hiddenBlcok:(HiddenBlcok)hiddenBlcok selectedBlcok:(SelectedBlcok)selectedBlcok
++ (id)showCustomPickerWitheDataDic:(NSDictionary *)dataDic imageDic:(NSDictionary *)imageDic editBlcok:(EditBlcok )editBlcok hiddenBlcok:(HiddenBlcok)hiddenBlcok selectedBlcok:(SelectedBlcok)selectedBlcok
 {
+    shareInstance = [CustomPickerView shareInstance];
     
-    CustomPickerView *pickerView = [[NSBundle mainBundle] loadNibNamed:@"CustomPickerView" owner:self options:nil].lastObject;
-    pickerView.translatesAutoresizingMaskIntoConstraints = NO;
-    pickerSubview.backgroundColor = [UIColor redColor];
-    [pickerSubview addSubview:pickerView];
+    shareInstance.frame = CGRectMake(0, [UIApplication sharedApplication].keyWindow.frame.size.height, [UIApplication sharedApplication].keyWindow.frame.size.width, CustomPickerViewHeight);
+    [[UIApplication sharedApplication].keyWindow addSubview:shareInstance];
     
-    // align pickerView from the left and right
-    [pickerSubview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[pickerView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(pickerView)]];
+    shareInstance.editBlcok = editBlcok;
+    shareInstance.hiddenBlcok = editBlcok;
+    shareInstance.selectedBlcok = selectedBlcok;
     
-    // align pickerView from the bottom
-    NSArray *mArr = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[pickerView(==170)]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(pickerView)];
-    pickerView.topConstraint = mArr.lastObject;
+    shareInstance.dataDic = dataDic;
+    shareInstance.imageDic = imageDic;
     
-    [pickerSubview addConstraints:mArr];
+    shareInstance.pickerView.dataSource = shareInstance;
+    shareInstance.pickerView.delegate = shareInstance;
     
+    [shareInstance.pickerView selectRow:0 inComponent:0 animated:YES];
+    [shareInstance.pickerView reloadAllComponents];
     
-    pickerView.editBlcok = editBlcok;
-    pickerView.hiddenBlcok = editBlcok;
-    pickerView.selectedBlcok = selectedBlcok;
-    pickerView.dataDic = dataDic;
-    pickerView.pickerSubview = pickerSubview;
-    pickerView.imageDic = imageDic;
+    shareInstance.titlerray = shareInstance.dataDic[shareInstance.dataDic.allKeys.firstObject];
+    shareInstance.imageArray = shareInstance.imageDic[shareInstance.imageDic.allKeys.firstObject];
     
-    pickerView.pickerView.dataSource = pickerView;
-    pickerView.pickerView.delegate = pickerView;
+    [shareInstance showCustomPickerView];
     
-    pickerView.titlerray = pickerView.dataDic[pickerView.dataDic.allKeys.firstObject];
-    pickerView.imageArray = pickerView.imageDic[pickerView.imageDic.allKeys.firstObject];
-    
-    return pickerView;
+    return shareInstance;
 }
+
++ (CustomPickerView *)shareInstance
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shareInstance = [[NSBundle mainBundle] loadNibNamed:@"CustomPickerView" owner:self options:nil].lastObject;
+    });
+    return shareInstance;
+}
+
 
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -124,7 +132,7 @@
             textLabel.text = self.dataDic.allKeys[row];
             textLabel.font = [UIFont systemFontOfSize:18.0f];
             textLabel.textAlignment = NSTextAlignmentCenter;
-            
+            textLabel.textColor = [UIColor whiteColor];
             
             [view addSubview:textLabel];
             
@@ -146,6 +154,7 @@
             textLabel.text = self.titlerray[row];
             textLabel.font = [UIFont systemFontOfSize:18.0f];
             textLabel.textAlignment = NSTextAlignmentCenter;
+            textLabel.textColor = [UIColor whiteColor];
             [view addSubview:textLabel];
             
             return view;
@@ -172,15 +181,39 @@
 }
 
 - (IBAction)hidenBtnAction:(UIButton *)sender {
-    if (self.hiddenBlcok) {
+    [self hiddenCustomPickerView];
+}
+- (void)showCustomPickerView
+{
+    CGRect frame = shareInstance.frame;
+    frame.origin.y = [UIApplication sharedApplication].keyWindow.frame.size.height ;
+    shareInstance.frame = frame;
+    
+    [UIView animateWithDuration:.3 animations:^{
+        CGRect frame = shareInstance.frame;
+        frame.origin.y = [UIApplication sharedApplication].keyWindow.frame.size.height - CustomPickerViewHeight;
+        shareInstance.frame = frame;
         
-        self.topConstraint.constant = -170;
-        [UIView animateWithDuration:.3 animations:^{
-            [self layoutIfNeeded];
-        }completion:^(BOOL finished) {
-            self.hiddenBlcok();
-        }];
-    }
+    }completion:^(BOOL finished) {
+
+    }];
 }
 
+- (void)hiddenCustomPickerView
+{
+    CGRect frame = shareInstance.frame;
+    frame.origin.y = [UIApplication sharedApplication].keyWindow.frame.size.height - CustomPickerViewHeight;
+    shareInstance.frame = frame;
+    
+    [UIView animateWithDuration:.3 animations:^{
+        CGRect frame = shareInstance.frame;
+        frame.origin.y = [UIApplication sharedApplication].keyWindow.frame.size.height ;
+        shareInstance.frame = frame;
+        
+    }completion:^(BOOL finished) {
+        if (self.hiddenBlcok) {
+            self.hiddenBlcok();
+        }
+    }];
+}
 @end

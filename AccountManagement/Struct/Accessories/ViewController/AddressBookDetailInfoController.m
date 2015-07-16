@@ -75,7 +75,7 @@
         
         [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (error) {
-                [SVProgressHUD showErrorWithStatus:error.description];
+
             } else {
                 for (AVObject *avobjet  in objects) {
                     AVFile *file = [avobjet objectForKey:@"image"];
@@ -83,7 +83,7 @@
                     [self.photosArray addObject:[UIImage imageWithData:[file getData]]];
                 }
                 [self.detailInfoCollectionView reloadData];
-                [SVProgressHUD showSuccessWithStatus:@"加载成功!"];
+
             }
         }];
 

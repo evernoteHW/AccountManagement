@@ -75,6 +75,9 @@
 		74DEA0AC1B26C17D007E42AC /* UIColor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DEA0AB1B26C17D007E42AC /* UIColor+Extension.m */; };
 		74DEA0B61B26DF12007E42AC /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DEA0B51B26DF12007E42AC /* CHTCollectionViewWaterfallLayout.m */; };
 		74DEA0B91B26ECF1007E42AC /* UIImage+ImageFormColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DEA0B81B26ECF1007E42AC /* UIImage+ImageFormColor.m */; };
+		74E719E11B578E0700977DF7 /* CustomPickerWordsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E719E01B578E0700977DF7 /* CustomPickerWordsView.m */; };
+		74E719E31B578E1500977DF7 /* CustomPickerWordsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E719E21B578E1500977DF7 /* CustomPickerWordsView.xib */; };
+		74E719E61B579D7700977DF7 /* DisburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E719E51B579D7700977DF7 /* DisburseModel.m */; };
 		74FAF1971B426D71000799B4 /* BaseIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FAF1961B426D71000799B4 /* BaseIBView.m */; };
 		D650C70BE0A23D65264D6676 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED00B2A77025754CBC0ADD6C /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -90,8 +93,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		52BEDE20E4861C8954169AB7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		5796DBAAF6C63AEF7883CE8F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7405471B1B3E3B760041BDFE /* BaseDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDataModel.h; sourceTree = "<group>"; };
 		7405471C1B3E3B760041BDFE /* BaseDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDataModel.m; sourceTree = "<group>"; };
 		7405471E1B3E3F590041BDFE /* BaseRelationShips.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRelationShips.h; sourceTree = "<group>"; };
@@ -213,8 +214,15 @@
 		74DEA0B51B26DF12007E42AC /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		74DEA0B71B26ECF1007E42AC /* UIImage+ImageFormColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageFormColor.h"; sourceTree = "<group>"; };
 		74DEA0B81B26ECF1007E42AC /* UIImage+ImageFormColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageFormColor.m"; sourceTree = "<group>"; };
+		74E719DF1B578E0700977DF7 /* CustomPickerWordsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerWordsView.h; sourceTree = "<group>"; };
+		74E719E01B578E0700977DF7 /* CustomPickerWordsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickerWordsView.m; sourceTree = "<group>"; };
+		74E719E21B578E1500977DF7 /* CustomPickerWordsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerWordsView.xib; sourceTree = "<group>"; };
+		74E719E41B579D7700977DF7 /* DisburseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisburseModel.h; sourceTree = "<group>"; };
+		74E719E51B579D7700977DF7 /* DisburseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisburseModel.m; sourceTree = "<group>"; };
 		74FAF1951B426D71000799B4 /* BaseIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseIBView.h; sourceTree = "<group>"; };
 		74FAF1961B426D71000799B4 /* BaseIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseIBView.m; sourceTree = "<group>"; };
+		A4F54C96FC568B2B0702A5C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BF68158FCE62FC0A94AD04C7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		ED00B2A77025754CBC0ADD6C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -519,6 +527,8 @@
 		74D85BEF1B500E9F009FA41D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				74E719E41B579D7700977DF7 /* DisburseModel.h */,
+				74E719E51B579D7700977DF7 /* DisburseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,6 +550,9 @@
 				74D5F2EC1B553B4400161283 /* CustomPickerView.h */,
 				74D5F2ED1B553B4800161283 /* CustomPickerView.m */,
 				74D5F2EF1B553B7100161283 /* CustomPickerView.xib */,
+				74E719DF1B578E0700977DF7 /* CustomPickerWordsView.h */,
+				74E719E01B578E0700977DF7 /* CustomPickerWordsView.m */,
+				74E719E21B578E1500977DF7 /* CustomPickerWordsView.xib */,
 				74D5F2E81B53FC1F00161283 /* DisburseTableViewCell.h */,
 				74D5F2E91B53FC1F00161283 /* DisburseTableViewCell.m */,
 				74D5F2F11B554A3800161283 /* CustomDatePickerView.h */,
@@ -555,8 +568,8 @@
 				74DEA0691B268883007E42AC /* AccountManagement */,
 				74DEA0831B268883007E42AC /* AccountManagementTests */,
 				74DEA0681B268883007E42AC /* Products */,
-				A61CA56975E205ED318CCDD7 /* Pods */,
 				297B3A3E1EA1B98751648737 /* Frameworks */,
+				9DECBEEBBE24D60F53BFB91D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -725,11 +738,11 @@
 			path = CHTCollectionViewWaterfallLayout;
 			sourceTree = "<group>";
 		};
-		A61CA56975E205ED318CCDD7 /* Pods */ = {
+		9DECBEEBBE24D60F53BFB91D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5796DBAAF6C63AEF7883CE8F /* Pods.debug.xcconfig */,
-				52BEDE20E4861C8954169AB7 /* Pods.release.xcconfig */,
+				A4F54C96FC568B2B0702A5C0 /* Pods.debug.xcconfig */,
+				BF68158FCE62FC0A94AD04C7 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -741,11 +754,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74DEA08A1B268883007E42AC /* Build configuration list for PBXNativeTarget "AccountManagement" */;
 			buildPhases = (
-				DFD3315BB5F36AE959CDDF8F /* Check Pods Manifest.lock */,
 				74DEA0631B268883007E42AC /* Sources */,
 				74DEA0641B268883007E42AC /* Frameworks */,
 				74DEA0651B268883007E42AC /* Resources */,
-				23ABB77A63491A7AA403E214 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -819,6 +830,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74DEA0761B268883007E42AC /* Main.storyboard in Resources */,
+				74E719E31B578E1500977DF7 /* CustomPickerWordsView.xib in Resources */,
 				74D5F2F51B554A4300161283 /* CustomDatePickerView.xib in Resources */,
 				74D5F2F01B553B7100161283 /* CustomPickerView.xib in Resources */,
 				741937B81B298B1B006DAB37 /* Localizable.strings in Resources */,
@@ -836,39 +848,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		23ABB77A63491A7AA403E214 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DFD3315BB5F36AE959CDDF8F /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		74DEA0631B268883007E42AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -879,6 +858,7 @@
 				74A75B971B476F07007CAC57 /* CashierDetailInfoViewController.m in Sources */,
 				74BD88CD1B2A8A6400FD7E77 /* MainfestViewController.m in Sources */,
 				7405471D1B3E3B760041BDFE /* BaseDataModel.m in Sources */,
+				74E719E11B578E0700977DF7 /* CustomPickerWordsView.m in Sources */,
 				7464ED151B29492A00E28441 /* UIPlaceHolderTextView.m in Sources */,
 				7464ED0F1B29362A00E28441 /* DetailInfoFlowLayout.m in Sources */,
 				74A75BA01B476F3E007CAC57 /* OrderViewController.m in Sources */,
@@ -913,6 +893,7 @@
 				7431C0931B27CBC500DF7E47 /* ContactPlistViewController.m in Sources */,
 				7431C0A11B280F9700DF7E47 /* AddressBookDetailInfo.m in Sources */,
 				74FAF1971B426D71000799B4 /* BaseIBView.m in Sources */,
+				74E719E61B579D7700977DF7 /* DisburseModel.m in Sources */,
 				742E0A0A1B4A188800123DD5 /* NSDate+UIUtils.m in Sources */,
 				74DEA0A41B26BE7E007E42AC /* FlowCollectionViewCell.m in Sources */,
 				74A75BA31B4771C7007CAC57 /* OrderTableViewCell.m in Sources */,
@@ -1048,7 +1029,7 @@
 		};
 		74DEA08B1B268883007E42AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5796DBAAF6C63AEF7883CE8F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = A4F54C96FC568B2B0702A5C0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1059,8 +1040,6 @@
 					"\"${PODS_ROOT}/Headers/Public/AAShareBubbles\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/Public/Canvas\"",
-					"\"${PODS_ROOT}/Headers/Public/MagicalRecord\"",
-					"\"${PODS_ROOT}/Headers/Public/MagicalRecord/MagicalRecord\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 					"\"${PODS_ROOT}/Headers/Public/SWTableViewCell\"",
 					"\"${PODS_ROOT}/Headers/Public/UICKeyChainStore\"",
@@ -1075,7 +1054,7 @@
 		};
 		74DEA08C1B268883007E42AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52BEDE20E4861C8954169AB7 /* Pods.release.xcconfig */;
+			baseConfigurationReference = BF68158FCE62FC0A94AD04C7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1086,8 +1065,6 @@
 					"\"${PODS_ROOT}/Headers/Public/AAShareBubbles\"",
 					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/Public/Canvas\"",
-					"\"${PODS_ROOT}/Headers/Public/MagicalRecord\"",
-					"\"${PODS_ROOT}/Headers/Public/MagicalRecord/MagicalRecord\"",
 					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
 					"\"${PODS_ROOT}/Headers/Public/SWTableViewCell\"",
 					"\"${PODS_ROOT}/Headers/Public/UICKeyChainStore\"",

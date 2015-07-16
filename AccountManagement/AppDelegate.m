@@ -8,12 +8,12 @@
 
 #import "AppDelegate.h"
 #import "UIImage+ImageFormColor.h"
-#import "MagicalRecord.h"
 #import "AddressBookDetailInfo.h"
 #import "AVOSCloud.h"
 #import "UserLoginModel.h"
 #import "MenuItemModel.h"
 #import "MainfestModel.h"
+#import "DisburseModel.h"
 
 @interface AppDelegate ()
 
@@ -56,6 +56,7 @@
     [MainfestModel registerSubclass];
     [CashierModel registerSubclass];
     [OrderInfoModel registerSubclass];
+    [DisburseModel registerSubclass];
 }
 - (void)initViewControllers
 {

@@ -22,12 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    NSMutableDictionary *nameAndStateDic1 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",@"NO",@"state",nil];
-    NSMutableDictionary *nameAndStateDic2 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",@"NO",@"state",nil];
-    NSMutableDictionary *nameAndStateDic3 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"AttachedCell",@"cell",@"YES",@"state",nil];
-    NSMutableDictionary *nameAndStateDic4 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",@"NO",@"state",nil];
-    self.dataArray = [[NSMutableArray alloc] initWithObjects:nameAndStateDic1,nameAndStateDic2,nameAndStateDic3, nameAndStateDic4,nil];
+    
+    NSCalendar * calendar= [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSInteger unitFlags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour|NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents * component=[calendar components:unitFlags fromDate:[NSDate date]];
+    NSInteger month = [component month];
+    
+    for (NSInteger i = 1; i < month; i++) {
+        [self.dataArray addObject:@(i)];
+    }
+    //请求一个大组...............
     
 }
 
@@ -40,79 +44,66 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *identifier = @"DisburseTableViewCell";
+    DisburseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.monthLabel.text = @(self.dataArray.count - indexPath.row).stringValue ;
     
-    
-    if ([self.dataArray[indexPath.row][@"cell"] isEqualToString:@"DisburseTableViewCell"]) {
-        
-        static NSString *identifier = @"DisburseTableViewCell";
-        DisburseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        cell.monthLabel.text = @(self.dataArray.count - indexPath.row).stringValue ;
-        
-        return cell;
-    }
-    else {
-        
-        static NSString *identifier = @"DisburseTableViewSubCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        
-        return cell;
-    }
-    
+    return cell;
     return nil;
 
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    titleBtn.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
+    [titleBtn setTitle:@"点击展开" forState:UIControlStateNormal];
+    return titleBtn;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击cell后 改变cell的颜色 渐变
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    NSIndexPath *path = nil;
-    if ([self.dataArray[indexPath.row][@"cell"] isEqualToString:@"DisburseTableViewCell"])
-    {
-        if ([self.dataArray[indexPath.row][@"cell"] isEqualToString:@"DisburseTableViewCell"]) {
-            path = [NSIndexPath indexPathForItem:(indexPath.row+1) inSection:indexPath.section];
-        }
-        else if ([self.dataArray[indexPath.row][@"cell"] isEqualToString:@"AttachedCell"])
-        {
-            path = indexPath;
-        }
-        
-        NSLog(@"现在是第%ld行",indexPath.row);
-        NSLog(@"%@....%@...%ld",self.dataArray[indexPath.row],self.dataArray[indexPath.row][@"state"],indexPath.row);
-        if ([self.dataArray[indexPath.row][@"state"] boolValue] ) {
-            // 关闭附加cell
-            NSMutableDictionary *dd = self.dataArray[indexPath.row];
-            NSString *name = dd[@"name"];
-            NSMutableDictionary *nameAndStateDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",name,@"name",@"NO",@"state",nil];
-            self.dataArray[(path.row-1)] = nameAndStateDic;
-            [self.dataArray removeObjectAtIndex:path.row];
-//            NSLog(@"MainCell's grouparr:%@",self.dataArray);
-            [tableView beginUpdates];
-            [tableView deleteRowsAtIndexPaths:@[path]  withRowAnimation:UITableViewRowAnimationFade];
-            [tableView endUpdates];
-        }
-        else
-        {
-            // 打开附加cell
-            NSMutableDictionary *subDic = self.dataArray[indexPath.row];
-            NSString *name = subDic[@"name"];
-            if (!name) {
-                name = @"";
-            }
-            
-            NSMutableDictionary *nameAndStateDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DisburseTableViewCell",@"cell",@"YES",@"state",name,@"name",nil];
-//            NSLog(@"%ld",path.row-1);
-            self.dataArray[(path.row - 1)] = nameAndStateDic;
-            
-            NSMutableDictionary *nameAndStateDic1 = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"AttachedCell",@"cell",@"YES",@"state",nil];
-            
-            [self.dataArray insertObject:nameAndStateDic1 atIndex:path.row];
+  
+}
 
-            [tableView beginUpdates];
-            [tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView endUpdates];
+- (void)getMonthDataWithTime:(NSString *)timeStr
+{
+    //查询
+    AVRelation *avRelation = [self.menuItemModel objectForKey:[NSString stringWithFormat:@"Disburse_%@",timeStr]];
+    [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+
+        } else {
+            NSMutableArray *smallerArray = nil;
+//            for (AddressBookDetailInfo *addressBookDetailInfo in objects) {
+//                //重新分组
+//                //                NSLog(@"%@",addressBookDetailInfo.groupingType);
+//                BOOL isFind = NO;
+//                for (NSDictionary *dic in dataArray) {
+//                    if ([dic.allKeys.firstObject isEqualToString:addressBookDetailInfo.groupingType]) {
+//                        [dic.allValues.firstObject addObject:addressBookDetailInfo];
+//                        //跳出循环
+//                        isFind = YES;
+//                        break;
+//                    }
+//                }
+//                if (!isFind) {
+//                    smallerArray = [NSMutableArray array];
+//                    [smallerArray addObject:addressBookDetailInfo];
+//                    [dataArray  addObject:@{addressBookDetailInfo.groupingType:smallerArray}];
+//                }
+//                
+//            }
+//            [self.contactPlistTableView reloadData];
+
         }
-    }
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

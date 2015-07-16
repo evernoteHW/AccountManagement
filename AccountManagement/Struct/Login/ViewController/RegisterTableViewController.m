@@ -25,8 +25,6 @@
 }
 - (IBAction)regiesterBtnAction:(UIButton *)sender {
     
-    [SVProgressHUD show];
-    
     UserLoginModel *user = [UserLoginModel user];
     user.username = self.userNameTextField.text;
     user.email = self.mailTextField.text;
@@ -58,7 +56,7 @@
                     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (!error) {
                             
-                            [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+
                             
                             [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text  forKey:kUSERNAME];
                             [[NSUserDefaults standardUserDefaults] setObject:self.pwdTextField.text  forKey:kUSERPASSWARD];
@@ -70,7 +68,7 @@
             }];
             
         } else {
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@",error.description]];
+
         }
     }];
 

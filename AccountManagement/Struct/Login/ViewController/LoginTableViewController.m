@@ -54,14 +54,14 @@
         if (user != nil) {
             //登陆成功
             [UIApplication sharedApplication].keyWindow.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RootTabBarViewController"];
-            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+
             
             [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text  forKey:kUSERNAME];
             [[NSUserDefaults standardUserDefaults] setObject:self.pwdTextField.text  forKey:kUSERPASSWARD];
             
         } else {
             //登陆失败
-            [SVProgressHUD showErrorWithStatus:@"登录失败"];
+
         }
     }];
 }
@@ -103,7 +103,7 @@
          if (success) {
              [[NSNotificationCenter defaultCenter] postNotificationName:kAutoLoginInNotification object:nil];
          } else {
-             [SVProgressHUD showErrorWithStatus:@"验证失败"];
+
          }
      }];
     

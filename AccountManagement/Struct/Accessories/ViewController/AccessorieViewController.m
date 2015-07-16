@@ -56,11 +56,11 @@
 
 - (void)getMenuItemListData
 {
-    [SVProgressHUD show];
+
     AVRelation *avRelation = [[UserLoginModel currentUser] objectForKey:@"menuItemNameArr"];
     [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-             [SVProgressHUD showErrorWithStatus:error.description];
+
         } else {
             for (MenuItemModel *menuItemModel in objects) {
                 
@@ -69,7 +69,7 @@
                 }
             };
             [self.accessorieCollectionView reloadData];
-            [SVProgressHUD showSuccessWithStatus:@"加载成功!"];
+
         }
     }];
 }

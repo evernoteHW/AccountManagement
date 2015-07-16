@@ -26,7 +26,7 @@
     // Do any additional setup after loading the view.
     mainFestDataArray = [NSMutableArray array];
     
-    [SVProgressHUD show];
+
     [self getMainfestData];
 
 }
@@ -37,14 +37,14 @@
     AVRelation *avRelation = [self.menuItemModel objectForKey:@"MainfestDetailInfoRelationShips"];
     [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-            [SVProgressHUD showErrorWithStatus:error.description];
+
         } else {
             for (MainfestModel *mainfestModel in objects) {
                 [mainFestDataArray addObject:mainfestModel];
 //                NSLog(@"%f",[mainfestModel.createdAt timeIntervalSince1970]);
             }
             [self.mainfestTableView reloadData];
-            [SVProgressHUD showSuccessWithStatus:@"加载成功!"];
+
         }
     }];
 }
