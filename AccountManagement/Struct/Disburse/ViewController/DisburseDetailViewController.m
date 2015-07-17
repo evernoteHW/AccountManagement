@@ -35,6 +35,7 @@
     label.text = @"¥ ";
     self.moneyTextField.leftView = label;
     
+    cureentDate = [NSDate date];
 }
 - (IBAction)saveDisburseBtnAction:(id)sender {
     
@@ -62,7 +63,7 @@
         
         if (succeeded) {
             //同一个月份 分到这个大组
-            self.menuItemModel.relationFriends = [self.menuItemModel relationforKey:[NSString stringWithFormat:@"DisburseShips%@",self.disburseModel.timeStr]];
+            self.menuItemModel.relationFriends = [self.menuItemModel relationforKey:[NSString stringWithFormat:@"DisburseShips%@",self.disburseModel.parentTime]];
             
             [self.menuItemModel.relationFriends addObject:self.disburseModel];
             
@@ -143,7 +144,12 @@
             break;
         case 3:
         {
-          
+            [CustomDatePickerView showCustomPickerWithDate:[NSDate date] selectedBlcok:^(NSString *menuItem, NSDate *date__) {
+                
+                self.timeLabel.text = menuItem;
+                cureentDate = date__;
+                
+            }];
         }
         break;
         default:

@@ -19,6 +19,7 @@
 
 + (NSString *) getTimeStrStyle2:(NSTimeInterval)time;
 + (NSInteger) getCureentMonth;
++ (NSInteger) getCureentYear;
 
 + (NSInteger)dayCountForMonth:(NSInteger)month andYear:(NSInteger)year;
 + (BOOL)isLeapYear:(NSInteger)year;

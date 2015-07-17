@@ -25,7 +25,7 @@
     // Do any additional setup after loading the view.
     
     for (NSInteger i = [NSDate getCureentMonth]; i > 0; i--) {
-        [self.dataArray addObject:@{[NSString stringWithFormat:@"%ld",i]:[@[] mutableCopy]}];
+        [self.dataArray addObject:@{[NSString stringWithFormat:@"%ld_%02ld",[NSDate getCureentYear],i]:[@[] mutableCopy]}];
     }
 }
 
@@ -70,26 +70,36 @@
     customTitleView.tag = section;
     NSDictionary *dic = self.dataArray[section];
     customTitleView.monthLabel.text = dic.allKeys.firstObject;
+    customTitleView.timeStr = dic.allKeys.firstObject;
     
+    customTitleView.tapBlcok = ^(CustomTitleView *customTitleView__){
+        
+        AVRelation *avRelation = [self.menuItemModel objectForKey:[NSString stringWithFormat:@"DisburseShips%@",customTitleView__.timeStr]];
+        [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (error) {
+                
+            } else {
+                NSMutableArray *arr = nil;
+                for (NSDictionary *dic in self.dataArray) {
+                    if ([dic.allKeys.firstObject isEqualToString:customTitleView__.timeStr]) {
+                        arr = dic[dic.allKeys.firstObject];
+                        break;
+                    }
+                }
+                
+                for (DisburseModel *model in objects) {
+                    [arr addObject:model];
+                }
+                
+                [self.disbuseTableView reloadData];
+                
+            }
+        }];
+    };
   
     return customTitleView;
 }
 
-- (void)customTitleViewAction:(UITapGestureRecognizer *)tap
-{
-    //查询本月所有数据
-    
-    AVRelation *avRelation = [self.menuItemModel objectForKey:[NSString stringWithFormat:@"DisburseShips%@",timeStr2]];
-    [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error) {
-            
-        } else {
-            NSLog(@"%@",objects);
-            
-        }
-    }];
-    
-}
 
 - (void)titleBtnAction:(UIButton *)btn
 {

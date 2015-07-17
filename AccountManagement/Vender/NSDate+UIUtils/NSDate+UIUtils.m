@@ -103,6 +103,15 @@
 
     return [component month];
 }
++ (NSInteger )getCureentYear
+{
+    
+    NSCalendar * calendar=[[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSInteger unitFlags =  NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour|NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents * component=[calendar components:unitFlags fromDate:[NSDate date]];
+    
+    return [component year];
+}
 
 + (NSDateComponents*) getComponent:(long long)time
 {

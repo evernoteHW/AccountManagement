@@ -29,7 +29,9 @@
 
 - (void)customTitleViewAction:(UITapGestureRecognizer *)tap
 {
-    
+    if (self.tapBlcok) {
+        self.tapBlcok(self);
+    }
 }
 
 @end
