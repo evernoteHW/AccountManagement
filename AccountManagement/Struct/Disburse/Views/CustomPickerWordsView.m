@@ -70,12 +70,12 @@ static CustomPickerWordsView *shareInstance = nil;
 {
     UIView *bgView = [UIView new];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIApplication sharedApplication].keyWindow.center.x - 38, 7, 30, 30)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIApplication sharedApplication].keyWindow.center.x - 68, 7, 30, 30)];
     NSArray *arr = self.dataArray[row];
     imageView.image = [UIImage imageNamed:arr[0]];
     [bgView addSubview:imageView];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIApplication sharedApplication].keyWindow.center.x , 0, 120, 44)];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIApplication sharedApplication].keyWindow.center.x - 30 , 0, 120, 44)];
     textLabel.text = arr[1];
     textLabel.font = [UIFont systemFontOfSize:18.0f];
     textLabel.textAlignment = NSTextAlignmentCenter;

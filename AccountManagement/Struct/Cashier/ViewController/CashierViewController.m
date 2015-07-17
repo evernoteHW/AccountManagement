@@ -23,7 +23,7 @@
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
 @property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView;
 @property (weak, nonatomic) IBOutlet JTHorizontalCalendarView *calendarContentView;
-@property (weak, nonatomic) IBOutlet UIView *detailInfoLabel;
+@property (weak, nonatomic) IBOutlet UIView *detailInfoView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cashierContentViewConstraints;
 @end
@@ -213,6 +213,13 @@
     }
 }
 
+- (IBAction)addCashierDetailBtnAction:(id)sender {
+    CashierDetailInfoViewController *vc = [self storyBoardWithIdentifier:@"CashierDetailInfoViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
+- (IBAction)showAndHideBtnAction:(id)sender {
+    self.detailInfoView.hidden = !self.detailInfoView.hidden;
+}
 
 @end

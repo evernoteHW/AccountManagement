@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>26F5A5B4-C3F7-4FD4-BD48-A5318D3BF87C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AccountManagement</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D35C20B32EFD62AA460A9B80A33B3A0158E4BE2D</key>
+		<string>https://github.com/evernoteHW/AccountManagement.git</string>
+		<key>aa079480-6527-3130-193b-ce57b7db7bff++505</key>
+		<string>https://github.com/evernoteHW/AccountManagement.git/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AccountManagement.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D35C20B32EFD62AA460A9B80A33B3A0158E4BE2D</key>
+		<string>..</string>
+		<key>aa079480-6527-3130-193b-ce57b7db7bff++505</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>aa079480-6527-3130-193b-ce57b7db7bff++505</key>
+		<string>https://github.com/evernoteHW/AccountManagement.git</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/evernoteHW/AccountManagement.git/trunk/AccountManagement.xcworkspace</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>aa079480-6527-3130-193b-ce57b7db7bff++505</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>aa079480-6527-3130-193b-ce57b7db7bff++505</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AccountManagement88</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D35C20B32EFD62AA460A9B80A33B3A0158E4BE2D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AccountManagement88</string>
+		</dict>
+	</array>
+</dict>
+</plist>
