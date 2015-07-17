@@ -13,5 +13,7 @@
 @dynamic timeStr;
 @dynamic iconStr;
 @dynamic moneyStr;
+@dynamic categoryStr;
+@dynamic disburseDesStr;
 
 @end

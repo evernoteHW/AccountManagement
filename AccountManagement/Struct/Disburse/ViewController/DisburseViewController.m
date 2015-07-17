@@ -10,6 +10,7 @@
 #import "DisburseDetailViewController.h"
 #import "DisburseTableViewCell.h"
 #import<CoreText/CoreText.h>
+#import "CustomTitleView.h"
 
 @interface DisburseViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -23,45 +24,76 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSCalendar * calendar= [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSInteger unitFlags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour|NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents * component=[calendar components:unitFlags fromDate:[NSDate date]];
-    NSInteger month = [component month];
-    
-    for (NSInteger i = 1; i < month; i++) {
-        [self.dataArray addObject:@(i)];
+    for (NSInteger i = [NSDate getCureentMonth]; i > 0; i--) {
+        [self.dataArray addObject:@{[NSString stringWithFormat:@"%ld",i]:[@[] mutableCopy]}];
     }
-    //请求一个大组...............
-    
 }
 
 #pragma mark
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataArray.count;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSDictionary *dic = self.dataArray[section];
+    NSArray *arr = dic[dic.allKeys.firstObject];
+    return arr.count;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"DisburseTableViewCell";
+    static NSString *identifier = @"DisburseTableViewSubCell";
     DisburseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    cell.monthLabel.text = @(self.dataArray.count - indexPath.row).stringValue ;
+    
+//    cell.monthLabel.text = @(self.dataArray.count - indexPath.row).stringValue ;
     
     return cell;
-    return nil;
-
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 44;
 }
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return nil;
+}
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleBtn.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44);
-    [titleBtn setTitle:@"点击展开" forState:UIControlStateNormal];
-    return titleBtn;
+    CustomTitleView *customTitleView = [[NSBundle mainBundle] loadNibNamed:@"CustomTitleView" owner:self options:nil].lastObject;
+    customTitleView.tag = section;
+    NSDictionary *dic = self.dataArray[section];
+    customTitleView.monthLabel.text = dic.allKeys.firstObject;
+    
+  
+    return customTitleView;
+}
+
+- (void)customTitleViewAction:(UITapGestureRecognizer *)tap
+{
+    //查询本月所有数据
+    
+    AVRelation *avRelation = [self.menuItemModel objectForKey:[NSString stringWithFormat:@"DisburseShips%@",timeStr2]];
+    [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            
+        } else {
+            NSLog(@"%@",objects);
+            
+        }
+    }];
+    
+}
+
+- (void)titleBtnAction:(UIButton *)btn
+{
+    //删除数据
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,39 +102,16 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
   
 }
+- (IBAction)addDisburseBtnAction:(id)sender {
+    
+    DisburseDetailViewController *vc = [self storyBoardWithIdentifier:@"DisburseDetailViewController"];
+    vc.menuItemModel = self.menuItemModel;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)getMonthDataWithTime:(NSString *)timeStr
 {
     //查询
-    AVRelation *avRelation = [self.menuItemModel objectForKey:[NSString stringWithFormat:@"Disburse_%@",timeStr]];
-    [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error) {
-
-        } else {
-            NSMutableArray *smallerArray = nil;
-//            for (AddressBookDetailInfo *addressBookDetailInfo in objects) {
-//                //重新分组
-//                //                NSLog(@"%@",addressBookDetailInfo.groupingType);
-//                BOOL isFind = NO;
-//                for (NSDictionary *dic in dataArray) {
-//                    if ([dic.allKeys.firstObject isEqualToString:addressBookDetailInfo.groupingType]) {
-//                        [dic.allValues.firstObject addObject:addressBookDetailInfo];
-//                        //跳出循环
-//                        isFind = YES;
-//                        break;
-//                    }
-//                }
-//                if (!isFind) {
-//                    smallerArray = [NSMutableArray array];
-//                    [smallerArray addObject:addressBookDetailInfo];
-//                    [dataArray  addObject:@{addressBookDetailInfo.groupingType:smallerArray}];
-//                }
-//                
-//            }
-//            [self.contactPlistTableView reloadData];
-
-        }
-    }];
 
 }
 

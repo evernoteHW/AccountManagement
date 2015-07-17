@@ -9,6 +9,9 @@
 #import "CashierDetailInfoViewController.h"
 
 @interface CashierDetailInfoViewController  ()
+{
+    NSDate *cureentDate;
+}
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *morningPerson;
@@ -16,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *afterPerson;
 
 @property (weak, nonatomic) IBOutlet UITextField *remendMoney;
+@property (weak, nonatomic) IBOutlet UITextField *salesMoneyTexField;
 @property (weak, nonatomic) IBOutlet UITextField *cashMoeny;
 @property (weak, nonatomic) IBOutlet UITextView *desContentTextView;
 
@@ -25,28 +29,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    cureentDate = [NSDate date];
 
 }
 - (IBAction)saveDetailInfoBtnAction:(UIButton *)sender {
     
-    NSInteger flagtype = 0;
     if (self.cashierModel) {
-        flagtype = 0;
+
     }else
     {
-        flagtype = 1;
         self.cashierModel = [CashierModel BD_Create];
     }
-    //先查询一下 是否有这个大组
+    
+    self.cashierModel.cureentDate = cureentDate;
+    self.cashierModel.parentTime = [NSDate getTimeStr2Short:[cureentDate timeIntervalSince1970]];  //2015年4月
+    self.cashierModel.childrTime = [NSDate getTimeStr3Short:[cureentDate timeIntervalSince1970]];  //2015年4月1日;
+    self.cashierModel.totalTime = [NSDate getTimeStr1:[cureentDate timeIntervalSince1970]];        //2015年4月1日 13：39;
+    
+    self.cashierModel.morningPersons = self.morningPerson.text;
+    self.cashierModel.dinnerPersons = self.dinnerPerson.text;
+    self.cashierModel.nightPersons = self.afterPerson.text;
+    self.cashierModel.totalMoney = @"9988";
+    self.cashierModel.deviation = @"+";
+    self.cashierModel.sales = self.salesMoneyTexField.text;
+    self.cashierModel.reservedMoney = self.remendMoney.text;
+    self.cashierModel.comment = self.desContentTextView.text;
    
     [self.cashierModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         if (succeeded) {
-            if (flagtype != 0) {
-                self.menuItemModel.relationFriends = [self.menuItemModel relationforKey:[NSString stringWithFormat:@"CashierShips_%@",self.timeLabel.text]];
-                [self.menuItemModel.relationFriends addObject:self.cashierModel];
-            }
+            //同一个月份 分到这个大组
+            self.menuItemModel.relationFriends = [self.menuItemModel relationforKey:[NSString stringWithFormat:@"CashierShips%@",self.cashierModel.parentTime]];
+            
+            [self.menuItemModel.relationFriends addObject:self.cashierModel];
+            
             [self.menuItemModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     if (self.baseBlock) {
@@ -58,17 +74,24 @@
         }
     }];
 
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[CustomPickerView shareInstance] removeFromSuperview];
     [[CustomPickerWordsView shareInstance] removeFromSuperview];
+    [[CustomDatePickerView shareInstance] removeFromSuperview];
     
     switch (indexPath.row) {
         case 0:
         {
+            [CustomDatePickerView showCustomPickerWithDate:[NSDate date] selectedBlcok:^(NSString *menuItem, NSDate *date__) {
+                
+                self.timeLabel.text = menuItem;
+                cureentDate = date__;
+                
+            }];
+            
         }
             break;
         case 1:
@@ -112,30 +135,6 @@
         {
             
             
-//            if (hiddenBtn == nil) {
-//                hiddenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//                hiddenBtn.backgroundColor = [UIColor blackColor];
-//                hiddenBtn.frame = CGRectMake(self.view.frame.size.width - 60, self.view.frame.size.height, 60, 35);
-//                [hiddenBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
-//                [hiddenBtn addTarget:self action:@selector(hiddenBtnAction) forControlEvents:UIControlEventTouchUpInside];
-//            }
-//            [self.view addSubview:hiddenBtn];
-//
-//            if (datePicker == nil) {
-//                datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height + 60, self.view.frame.size.width, 200)];
-//                datePicker.backgroundColor = [UIColor colorWithR:110 G:149 B:255];
-//                
-//                [datePicker setTimeZone:[NSTimeZone timeZoneWithName:@"zh_Hans_CN"]];
-//                
-//                [datePicker addTarget:self action:@selector(datePickerAction:) forControlEvents:UIControlEventValueChanged];
-//            }
-//            [self.view addSubview:datePicker];
-//            
-//            [UIView animateWithDuration:0.3 animations:^{
-//                datePicker.frame = CGRectMake(0, self.view.frame.size.height - 180, self.view.frame.size.width, 200);
-//                
-//                hiddenBtn.frame = CGRectMake(self.view.frame.size.width - 60, self.view.frame.size.height - 215, 60, 35);
-//            }];
         }
             break;
         default:

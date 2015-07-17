@@ -11,27 +11,19 @@
 
 @interface CashierModel : BaseDataModel
 
-@property (nonatomic, strong) NSString *cashierTime;                //时间
+@property (nonatomic, strong) NSDate *cureentDate;                     //时间     2015年7月
+@property (nonatomic, strong) NSString *parentTime;                    //时间     2015年7月
+@property (nonatomic, strong) NSString *childrTime;                    //时间     2015年7月1日
+@property (nonatomic, strong) NSString *totalTime;                     //时间     2015年7月1日 13:39 下午
 
-@property (nonatomic, strong) NSString *morningTotalMoney;          //总额
-@property (nonatomic, strong) NSString *morningPersons;              //早班人员
-@property (nonatomic, strong) NSString *morningDeviation;           //偏差
-@property (nonatomic, strong) NSString *morningSales;              //销售额
-@property (nonatomic, strong) NSString *morningReservedMoney;       //销售额
-@property (nonatomic, strong) NSString *morningComment;             //备注
+@property (nonatomic, strong) NSString *morningPersons;                 //早班人员
+@property (nonatomic, strong) NSString *dinnerPersons;                  //中班人员
+@property (nonatomic, strong) NSString *nightPersons;                   //晚班人员
 
-@property (nonatomic, strong) NSString *dinnerTotalMoney;          //总额
-@property (nonatomic, strong) NSString *dinnerPersons;              //早班人员
-@property (nonatomic, strong) NSString *dinnerDeviation;           //偏差
-@property (nonatomic, strong) NSString *dinnerSales;              //销售额
-@property (nonatomic, strong) NSString *dinnerReservedMoney;       //销售额
-@property (nonatomic, strong) NSString *dinnerComment;
-
-@property (nonatomic, strong) NSString *nightTotalMoney;          //总额
-@property (nonatomic, strong) NSString *nightPersons;              //早班人员
-@property (nonatomic, strong) NSString *nightDeviation;           //偏差
-@property (nonatomic, strong) NSString *nightSales;              //销售额
-@property (nonatomic, strong) NSString *nightReservedMoney;       //销售额
-@property (nonatomic, strong) NSString *nightComment;
+@property (nonatomic, strong) NSString *totalMoney;                     //总额
+@property (nonatomic, strong) NSString *deviation;                      //偏差
+@property (nonatomic, strong) NSString *sales;                          //销售额
+@property (nonatomic, strong) NSString *reservedMoney;                  //预留现金
+@property (nonatomic, strong) NSString *comment;                        //备注信息
 
 @end

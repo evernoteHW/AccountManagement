@@ -26,6 +26,9 @@
     #import "UserLoginModel.h"
     #import "CustomPickerView.h"
     #import "CustomPickerWordsView.h"
+    #import "CustomDatePickerView.h"
+    #import "UIImageView+WebCache.h"
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 green:((float)((rgbValue & 0xFF00) >> 8)) / 255.0 blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 //Cashie
 
@@ -50,6 +53,18 @@ static NSString * const kUSERPASSWARD = @"USERPASSWARD";
 
 #define kOrderInfoModelRelationShips @"OrderInfoModelRelationShips"
 
-#define kRGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
+#define FX(view)    view.frame.origin.x
+#define FY(view)    view.frame.origin.y
+#define FW(view)    view.frame.size.width
+#define FH(view)    view.frame.size.height
+
+#define kRGB(r,g,b)  [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+
+#define View_SET_X(view,x)  view.frame = CGRectMake(x, FY(view), FW(view), FH(view))
+#define View_SET_Y(view,y)  view.frame = CGRectMake(FX(view), y, FW(view), FH(view))
+#define View_SET_W(view,w)  view.frame = CGRectMake(FX(view), FY(view), w, FH(view))
+#define View_SET_H(view,h)  view.frame = CGRectMake(FX(view), FY(view), FW(view), h)
+#define View_SET_XY(view,x,y)  view.frame = CGRectMake(x, y, FW(view), FH(view))
+#define View_SET_WH(view,w,h)  view.frame = CGRectMake(FX(view), FY(view), w, h)
 #endif

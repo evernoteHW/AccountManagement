@@ -12,10 +12,7 @@
 
 @interface DisburseDetailViewController () <UITextFieldDelegate,UITextViewDelegate>
 {
-    NSArray *titleArray;
-    UIButton *hiddenBtn;
-    CustomPickerView *customPickerView;
-    UIDatePicker *datePicker;
+    NSDate *cureentDate;
 }
 @property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -39,6 +36,49 @@
     self.moneyTextField.leftView = label;
     
 }
+- (IBAction)saveDisburseBtnAction:(id)sender {
+    
+    
+    if (self.disburseModel) {
+        
+    }else
+    {
+        self.disburseModel = [DisburseModel BD_Create];
+    }
+    
+
+    self.disburseModel.cureentDate = cureentDate;
+    self.disburseModel.parentTime = [NSDate getTimeStr2Short:[cureentDate timeIntervalSince1970]];  //2015年4月
+    self.disburseModel.childrTime = [NSDate getTimeStr3Short:[cureentDate timeIntervalSince1970]];  //2015年4月1日;
+    self.disburseModel.totalTime = [NSDate getTimeStr1:[cureentDate timeIntervalSince1970]];        //2015年4月1日 13：39;
+    
+    self.disburseModel.moneyStr = self.moneyTextField.text;
+    self.disburseModel.categoryStr =  self.categoryLabel.text;
+    self.disburseModel.accountTypeStr = self.moneyTextField.text;
+    self.disburseModel.timeStr = self.timeLabel.text;
+
+    
+    [self.disburseModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        if (succeeded) {
+            //同一个月份 分到这个大组
+            self.menuItemModel.relationFriends = [self.menuItemModel relationforKey:[NSString stringWithFormat:@"DisburseShips%@",self.disburseModel.timeStr]];
+            
+            [self.menuItemModel.relationFriends addObject:self.disburseModel];
+            
+            [self.menuItemModel saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    if (self.baseBlock) {
+                        self.baseBlock(self.disburseModel);
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }
+    }];
+
+    
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -51,11 +91,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.view endEditing:YES];
-    [[CustomPickerView shareInstance] removeFromSuperview];
-    [[CustomPickerWordsView shareInstance] removeFromSuperview];
-    [hiddenBtn removeFromSuperview];
-    [datePicker removeFromSuperview];
     
+    [self removeSubViews];
+
     switch (indexPath.row) {
         case 0:
         {
@@ -105,32 +143,7 @@
             break;
         case 3:
         {
-            
-            
-            if (hiddenBtn == nil) {
-                hiddenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-                hiddenBtn.backgroundColor = [UIColor blackColor];
-                hiddenBtn.frame = CGRectMake(self.view.frame.size.width - 60, self.view.frame.size.height, 60, 35);
-                [hiddenBtn setImage:[UIImage imageNamed:@"down_arrow"] forState:UIControlStateNormal];
-                [hiddenBtn addTarget:self action:@selector(hiddenBtnAction) forControlEvents:UIControlEventTouchUpInside];
-            }
-            [self.view addSubview:hiddenBtn];
-            
-            if (datePicker == nil) {
-                datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height + 60, self.view.frame.size.width, 200)];
-                datePicker.backgroundColor = [UIColor colorWithR:110 G:149 B:255];
-
-                [datePicker setTimeZone:[NSTimeZone timeZoneWithName:@"zh_Hans_CN"]];
-                
-                [datePicker addTarget:self action:@selector(datePickerAction:) forControlEvents:UIControlEventValueChanged];
-            }
-            [self.view addSubview:datePicker];
-            
-            [UIView animateWithDuration:0.3 animations:^{
-                datePicker.frame = CGRectMake(0, self.view.frame.size.height - 180, self.view.frame.size.width, 200);
-                
-                hiddenBtn.frame = CGRectMake(self.view.frame.size.width - 60, self.view.frame.size.height - 215, 60, 35);
-            }];
+          
         }
         break;
         default:
@@ -139,10 +152,8 @@
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [[CustomPickerView shareInstance] removeFromSuperview];
-    [[CustomPickerWordsView shareInstance] removeFromSuperview];
-    [hiddenBtn removeFromSuperview];
-    [datePicker removeFromSuperview];
+    [self removeSubViews];
+   
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -152,46 +163,26 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [[CustomPickerView shareInstance] removeFromSuperview];
-    [[CustomPickerWordsView shareInstance] removeFromSuperview];
-    [hiddenBtn removeFromSuperview];
-    [datePicker removeFromSuperview];
+    [self removeSubViews];
+ 
 }
 
-- (void)datePickerAction:(UIDatePicker *)piker
-{
-    self.timeLabel.text = [NSDate getTimeStr1:[piker.date timeIntervalSince1970]];
-    NSLog(@"%@",self.timeLabel.text);
-}
-- (void)hiddenBtnAction
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        datePicker.frame = CGRectMake(0, self.view.frame.size.height + 60, self.view.frame.size.width, 200);
-        
-        hiddenBtn.frame = CGRectMake(self.view.frame.size.width - 60, self.view.frame.size.height , 60, 35);
-    }completion:^(BOOL finished) {
-        [hiddenBtn removeFromSuperview];
-        [datePicker removeFromSuperview];
-    }];
-}
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
-
-    [hiddenBtn removeFromSuperview];
-    [datePicker removeFromSuperview];
     
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.view endEditing:YES];
+ 
+  
+}
+- (void)removeSubViews
+{
     [[CustomPickerView shareInstance] removeFromSuperview];
     [[CustomPickerWordsView shareInstance] removeFromSuperview];
-    [hiddenBtn removeFromSuperview];
-    [datePicker removeFromSuperview];
-    
- 
-    
+    [[CustomDatePickerView shareInstance] removeFromSuperview];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

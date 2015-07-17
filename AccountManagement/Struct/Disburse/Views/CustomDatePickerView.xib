@@ -12,6 +12,7 @@
             <subviews>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hoq-C8-xwS">
                     <rect key="frame" x="0.0" y="66" width="600" height="180"/>
+                    <color key="backgroundColor" red="0.43137254899999999" green="0.58431372550000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="180" id="hTH-Ja-voR"/>
                     </constraints>
@@ -19,17 +20,20 @@
                         <!--2015-07-14 13:47:07 +0000-->
                     </date>
                 </datePicker>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgJ-66-tEg">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgJ-66-tEg">
                     <rect key="frame" x="500" y="0.0" width="100" height="35"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="Zkc-2c-8CF"/>
                         <constraint firstAttribute="width" constant="100" id="ZxD-HY-afG"/>
                     </constraints>
-                    <state key="normal" title="隐藏">
+                    <state key="normal" image="down_arrow">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="hidenBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="L3D-fH-tuu"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -42,7 +46,13 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="pickerView" destination="Hoq-C8-xwS" id="2AG-UE-Qo7"/>
+            </connections>
             <point key="canvasLocation" x="325" y="487"/>
         </view>
     </objects>
+    <resources>
+        <image name="down_arrow" width="15" height="10"/>
+    </resources>
 </document>

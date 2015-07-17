@@ -9,5 +9,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 
 @interface BaseDataModel : AVObject <AVSubclassing>
+
 + (id)BD_Create;
+
 @end

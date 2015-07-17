@@ -7,7 +7,11 @@
 //
 
 #import "BaseTableViewController.h"
+#import "DisburseModel.h"
 
 @interface DisburseDetailViewController : BaseTableViewController
+
+@property (nonatomic, strong)  DisburseModel *disburseModel;
+
 @property (nonatomic, strong) NSString *dataObject;
 @end

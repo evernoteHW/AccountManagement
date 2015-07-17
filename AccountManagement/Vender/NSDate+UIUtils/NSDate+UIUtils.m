@@ -74,15 +74,34 @@
     return string;
 }
 
-+ (NSString*)getMDStr:(NSTimeInterval)time
++ (NSString*)getTimeStr2Short:(NSTimeInterval)time
+{
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:time];
+    NSCalendar * calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSInteger unitFlags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour|NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents * component=[calendar components:unitFlags fromDate:date];
+    NSString * string=[NSString stringWithFormat:@"%04ld_%02ld",[component year],[component month]];
+    return string;
+}
+
++ (NSString*)getTimeStr3Short:(NSTimeInterval)time
+{
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:time];
+    NSCalendar * calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSInteger unitFlags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour|NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents * component=[calendar components:unitFlags fromDate:date];
+    NSString * string=[NSString stringWithFormat:@"%04ld_%02ld_%02ld",[component year],[component month],[component day]];
+    return string;
+}
+
++ (NSInteger )getCureentMonth
 {
     
-    NSDate * date=[NSDate dateWithTimeIntervalSince1970:time];
     NSCalendar * calendar=[[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSInteger unitFlags =  NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour|NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents * component=[calendar components:unitFlags fromDate:date];
-    NSString * string=[NSString stringWithFormat:@"%ld月%ld日",[component month],[component day]];
-    return string;
+    NSDateComponents * component=[calendar components:unitFlags fromDate:[NSDate date]];
+
+    return [component month];
 }
 
 + (NSDateComponents*) getComponent:(long long)time

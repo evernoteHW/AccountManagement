@@ -78,6 +78,8 @@
 		74E719E11B578E0700977DF7 /* CustomPickerWordsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E719E01B578E0700977DF7 /* CustomPickerWordsView.m */; };
 		74E719E31B578E1500977DF7 /* CustomPickerWordsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E719E21B578E1500977DF7 /* CustomPickerWordsView.xib */; };
 		74E719E61B579D7700977DF7 /* DisburseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E719E51B579D7700977DF7 /* DisburseModel.m */; };
+		74EAEFC81B58E6E80086CDE4 /* CustomTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EAEFC71B58E6E80086CDE4 /* CustomTitleView.m */; };
+		74EAEFCA1B58E76C0086CDE4 /* CustomTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74EAEFC91B58E76C0086CDE4 /* CustomTitleView.xib */; };
 		74FAF1971B426D71000799B4 /* BaseIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FAF1961B426D71000799B4 /* BaseIBView.m */; };
 		D650C70BE0A23D65264D6676 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED00B2A77025754CBC0ADD6C /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -219,6 +221,9 @@
 		74E719E21B578E1500977DF7 /* CustomPickerWordsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerWordsView.xib; sourceTree = "<group>"; };
 		74E719E41B579D7700977DF7 /* DisburseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisburseModel.h; sourceTree = "<group>"; };
 		74E719E51B579D7700977DF7 /* DisburseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisburseModel.m; sourceTree = "<group>"; };
+		74EAEFC61B58E6E80086CDE4 /* CustomTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTitleView.h; sourceTree = "<group>"; };
+		74EAEFC71B58E6E80086CDE4 /* CustomTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTitleView.m; sourceTree = "<group>"; };
+		74EAEFC91B58E76C0086CDE4 /* CustomTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTitleView.xib; sourceTree = "<group>"; };
 		74FAF1951B426D71000799B4 /* BaseIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseIBView.h; sourceTree = "<group>"; };
 		74FAF1961B426D71000799B4 /* BaseIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseIBView.m; sourceTree = "<group>"; };
 		A4F54C96FC568B2B0702A5C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -558,6 +563,9 @@
 				74D5F2F11B554A3800161283 /* CustomDatePickerView.h */,
 				74D5F2F21B554A3800161283 /* CustomDatePickerView.m */,
 				74D5F2F41B554A4300161283 /* CustomDatePickerView.xib */,
+				74EAEFC61B58E6E80086CDE4 /* CustomTitleView.h */,
+				74EAEFC71B58E6E80086CDE4 /* CustomTitleView.m */,
+				74EAEFC91B58E76C0086CDE4 /* CustomTitleView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -830,6 +838,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74DEA0761B268883007E42AC /* Main.storyboard in Resources */,
+				74EAEFCA1B58E76C0086CDE4 /* CustomTitleView.xib in Resources */,
 				74E719E31B578E1500977DF7 /* CustomPickerWordsView.xib in Resources */,
 				74D5F2F51B554A4300161283 /* CustomDatePickerView.xib in Resources */,
 				74D5F2F01B553B7100161283 /* CustomPickerView.xib in Resources */,
@@ -856,6 +865,7 @@
 				7431C0AA1B281EB900DF7E47 /* AddressBookDetailInfoController.m in Sources */,
 				74A75BA61B477CC7007CAC57 /* OrderDetailViewController.m in Sources */,
 				74A75B971B476F07007CAC57 /* CashierDetailInfoViewController.m in Sources */,
+				74EAEFC81B58E6E80086CDE4 /* CustomTitleView.m in Sources */,
 				74BD88CD1B2A8A6400FD7E77 /* MainfestViewController.m in Sources */,
 				7405471D1B3E3B760041BDFE /* BaseDataModel.m in Sources */,
 				74E719E11B578E0700977DF7 /* CustomPickerWordsView.m in Sources */,

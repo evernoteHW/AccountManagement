@@ -49,7 +49,10 @@
 }
 
 #pragma mark - CalendarManager delegate
-
+- (void)calendarDidLoadNextPage:(JTCalendarManager *)calendar
+{
+    NSLog(@"加载下一页");
+}
 // Exemple of implementation of prepareDayView method
 // Used to customize the appearance of dayView
 - (void)calendar:(JTCalendarManager *)calendar prepareDayView:(JTCalendarDayView *)dayView
@@ -93,6 +96,9 @@
 {
     _dateSelected = dayView.date;
     
+//   NSString *timeStr = [NSDate getTimeStr3Short:[dayView.date timeIntervalSince1970]];
+   NSString *timeStr2 = [NSDate getTimeStr2Short:[dayView.date timeIntervalSince1970]];
+    
     // Animation for the circleView
     dayView.circleView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.1, 0.1);
     [UIView transitionWithView:dayView
@@ -114,6 +120,21 @@
             [_calendarContentView loadPreviousPageWithAnimation];
         }
     }
+    
+
+    //查询本月所有数据
+    
+    AVRelation *avRelation = [self.menuItemModel objectForKey:[NSString stringWithFormat:@"CashierShips%@",timeStr2]];
+    [[avRelation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            
+        } else {
+            NSLog(@"%@",objects);
+            
+        }
+    }];
+
+    
 }
 
 #pragma mark - Date selection
@@ -149,7 +170,7 @@
     JTCalendarWeekDayView *view = [JTCalendarWeekDayView new];
     
     for(UILabel *label in view.dayViews){
-        label.textColor = [UIColor blackColor];
+        label.textColor = [UIColor whiteColor];
         label.font = [UIFont fontWithName:@"Avenir-Light" size:14];
     }
     
@@ -215,6 +236,7 @@
 
 - (IBAction)addCashierDetailBtnAction:(id)sender {
     CashierDetailInfoViewController *vc = [self storyBoardWithIdentifier:@"CashierDetailInfoViewController"];
+    vc.menuItemModel  = self.menuItemModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

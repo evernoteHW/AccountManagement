@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1210,9 +1210,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kNx-0Q-KGO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="kNx-0Q-KGO">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="x2z-Hq-sdM">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1420,12 +1420,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="EVz-29-AVs">
                             <color key="tintColor" red="0.98823529409999999" green="0.33333333329999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Kv1-6h-Vax" kind="show" id="3ve-eI-Yg9"/>
+                                <action selector="addDisburseBtnAction:" destination="IPz-k1-rc7" id="7Ot-Q3-Nwg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="disbuseTableView" destination="kNx-0Q-KGO" id="3d0-Ld-xD9"/>
+                        <segue destination="Kv1-6h-Vax" kind="show" id="ymt-2A-zV7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z07-VG-zHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1603,6 +1604,9 @@
                                     <color key="titleColor" red="0.98823529409999999" green="0.33333333329999998" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveDisburseBtnAction:" destination="Kv1-6h-Vax" eventType="touchUpInside" id="zkW-Zv-tAV"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1975,6 +1979,7 @@
                         <outlet property="dinnerPerson" destination="NNc-sj-A0m" id="2m9-qv-GUY"/>
                         <outlet property="morningPerson" destination="kXx-P9-K9j" id="8ct-ml-vri"/>
                         <outlet property="remendMoney" destination="of5-oB-zt0" id="LFw-dv-mMp"/>
+                        <outlet property="salesMoneyTexField" destination="Tfj-8V-jea" id="2cA-8d-VPc"/>
                         <outlet property="timeLabel" destination="aBL-d9-h0Z" id="M7x-W1-azs"/>
                     </connections>
                 </tableViewController>

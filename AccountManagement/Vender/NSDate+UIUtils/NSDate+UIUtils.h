@@ -12,8 +12,14 @@
 
 + (NSString *)getTimeStr1:(NSTimeInterval)time;
 + (NSString *) getTimeStrStyle1:(NSTimeInterval)time;
+
 + (NSString *)getTimeStr1Short:(NSTimeInterval)time;
++ (NSString *)getTimeStr2Short:(NSTimeInterval)time;
++ (NSString *)getTimeStr3Short:(NSTimeInterval)time;
+
 + (NSString *) getTimeStrStyle2:(NSTimeInterval)time;
++ (NSInteger) getCureentMonth;
+
 + (NSInteger)dayCountForMonth:(NSInteger)month andYear:(NSInteger)year;
 + (BOOL)isLeapYear:(NSInteger)year;
 

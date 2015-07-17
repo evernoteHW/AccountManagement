@@ -10,22 +10,17 @@
 
 @implementation CashierModel
 
-@dynamic cashierTime;
-
-@dynamic morningTotalMoney;
+@dynamic cureentDate;
+@dynamic parentTime;
+@dynamic childrTime;
+@dynamic totalTime;
 @dynamic morningPersons;
-@dynamic morningDeviation;
-@dynamic morningSales;
-@dynamic morningReservedMoney;
-@dynamic dinnerTotalMoney;
 @dynamic dinnerPersons;
-@dynamic dinnerDeviation;
-@dynamic dinnerSales;
-@dynamic dinnerReservedMoney;
-@dynamic nightTotalMoney;
 @dynamic nightPersons;
-@dynamic nightDeviation;
-@dynamic nightSales;
-@dynamic nightReservedMoney;
+@dynamic totalMoney;
+@dynamic deviation;
+@dynamic sales;
+@dynamic reservedMoney;
+@dynamic comment;
 
 @end
