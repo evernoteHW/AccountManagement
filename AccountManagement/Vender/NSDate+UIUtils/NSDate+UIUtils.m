@@ -94,6 +94,27 @@
     return string;
 }
 
++ (NSInteger )getDay:(NSTimeInterval)time
+{
+    
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:time];
+    NSCalendar * calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSInteger unitFlags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour|NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents * component=[calendar components:unitFlags fromDate:date];
+    return [component day];
+}
+
+
++ (NSInteger )getCureentDay
+{
+    
+    NSCalendar * calendar=[[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSInteger unitFlags =  NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour|NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents * component=[calendar components:unitFlags fromDate:[NSDate date]];
+    
+    return [component day];
+}
+
 + (NSInteger )getCureentMonth
 {
     

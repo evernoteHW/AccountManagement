@@ -18,6 +18,8 @@
 + (NSString *)getTimeStr3Short:(NSTimeInterval)time;
 
 + (NSString *) getTimeStrStyle2:(NSTimeInterval)time;
++ (NSInteger )getDay:(NSTimeInterval)time;
++ (NSInteger) getCureentDay;
 + (NSInteger) getCureentMonth;
 + (NSInteger) getCureentYear;
 

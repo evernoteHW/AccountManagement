@@ -10,8 +10,11 @@
 
 @interface DisburseTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
-@property (weak, nonatomic) IBOutlet UILabel *monthTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *disburseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weakLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dayTimeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *disbureseImageView;
+@property (weak, nonatomic) IBOutlet UILabel *disburseTypeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *disburseMoneyLabel;
 
 @end

@@ -12,8 +12,6 @@
 	<dict>
 		<key>D35C20B32EFD62AA460A9B80A33B3A0158E4BE2D</key>
 		<string>https://github.com/evernoteHW/AccountManagement.git</string>
-		<key>aa079480-6527-3130-193b-ce57b7db7bff++505</key>
-		<string>https://github.com/evernoteHW/AccountManagement.git/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>AccountManagement.xcworkspace</string>
@@ -21,12 +19,10 @@
 	<dict>
 		<key>D35C20B32EFD62AA460A9B80A33B3A0158E4BE2D</key>
 		<string>..</string>
-		<key>aa079480-6527-3130-193b-ce57b7db7bff++505</key>
-		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>aa079480-6527-3130-193b-ce57b7db7bff++505</key>
+		<key>D35C20B32EFD62AA460A9B80A33B3A0158E4BE2D</key>
 		<string>https://github.com/evernoteHW/AccountManagement.git</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -34,14 +30,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>aa079480-6527-3130-193b-ce57b7db7bff++505</string>
+	<string>D35C20B32EFD62AA460A9B80A33B3A0158E4BE2D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>aa079480-6527-3130-193b-ce57b7db7bff++505</string>
+			<string>D35C20B32EFD62AA460A9B80A33B3A0158E4BE2D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AccountManagement88</string>
 		</dict>

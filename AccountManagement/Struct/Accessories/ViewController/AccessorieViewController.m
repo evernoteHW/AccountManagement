@@ -17,7 +17,7 @@
 #import "CashierViewController.h"
 #import "OrderViewController.h"
 #import "DisburseViewController.h"
-
+#import "PerformanceViewController.h"
 
 @interface AccessorieViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
@@ -126,6 +126,13 @@
         case 3:
         {
             CashierViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CashierViewController"];
+            vc.menuItemModel = menuItemArray[indexPath.row];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 4:
+        {
+            PerformanceViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PerformanceViewController"];
             vc.menuItemModel = menuItemArray[indexPath.row];
             [self.navigationController pushViewController:vc animated:YES];
         }

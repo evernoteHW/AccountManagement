@@ -47,8 +47,13 @@
 {
     static NSString *identifier = @"DisburseTableViewSubCell";
     DisburseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-//    cell.monthLabel.text = @(self.dataArray.count - indexPath.row).stringValue ;
+    NSDictionary *dic = self.dataArray[indexPath.section];
+    NSArray *arr = dic[dic.allKeys.firstObject];
+    DisburseModel *model = arr[indexPath.row];
+    cell.dayTimeLabel.text = @([NSDate getDay:[model.cureentDate timeIntervalSince1970]]).stringValue;
+    cell.disburseMoneyLabel.text = model.moneyStr;
+    cell.disburseTypeLabel.text = model.accountTypeStr;
+    cell.disbureseImageView.image = [UIImage imageNamed:@"icon_yfsp"];
     
     return cell;
 }

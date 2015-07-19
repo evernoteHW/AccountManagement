@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *parentTime;
 @property (nonatomic, strong) NSString *childrTime;
 @property (nonatomic, strong) NSString *totalTime;
+//年月日
 
 @property (nonatomic, strong) NSString *timeStr;                //时间
 @property (nonatomic, strong) NSString *iconStr;                //

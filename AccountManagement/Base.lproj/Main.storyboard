@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -408,6 +408,7 @@
                         <segue destination="Hy3-d7-gtU" kind="show" id="xVi-Vo-Y4p"/>
                         <segue destination="Gqb-7I-DsT" kind="show" id="1as-W4-IxS"/>
                         <segue destination="IPz-k1-rc7" kind="show" id="yIX-9y-AYV"/>
+                        <segue destination="9cu-B8-s5L" kind="show" id="62C-16-2h9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1d-kt-aZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1198,6 +1199,25 @@
             </objects>
             <point key="canvasLocation" x="2581" y="2724"/>
         </scene>
+        <!--绩效-->
+        <scene sceneID="hzQ-Aq-sgE">
+            <objects>
+                <viewController storyboardIdentifier="PerformanceViewController" hidesBottomBarWhenPushed="YES" id="9cu-B8-s5L" customClass="PerformanceViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X0i-Er-YdM"/>
+                        <viewControllerLayoutGuide type="bottom" id="h89-sd-HuD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QLD-p5-2OW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="绩效" id="0or-yh-xVs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pk0-bA-2WZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3008" y="1709"/>
+        </scene>
         <!--支出-->
         <scene sceneID="XS8-Gk-tt8">
             <objects>
@@ -1291,7 +1311,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DisburseTableViewCell" id="uoV-4S-aWs" customClass="DisburseTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DisburseTableViewCell" id="uoV-4S-aWs">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uoV-4S-aWs" id="e5B-rU-Ze6">
@@ -1342,13 +1362,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="disburseLabel" destination="Nbh-3c-uRl" id="jgC-fd-wlY"/>
-                                            <outlet property="monthLabel" destination="bx2-tS-I2b" id="fjl-gw-DLw"/>
-                                            <outlet property="monthTimeLabel" destination="Tjq-6n-xuG" id="q74-2U-dDv"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DisburseTableViewSubCell" id="T0b-XM-Db7">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DisburseTableViewSubCell" id="T0b-XM-Db7" customClass="DisburseTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T0b-XM-Db7" id="cEc-qW-AE3">
@@ -1400,6 +1415,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dayTimeLabel" destination="VE7-LV-uCz" id="abU-ND-iCT"/>
+                                            <outlet property="disbureseImageView" destination="ycB-ZU-7YA" id="cIX-SO-193"/>
+                                            <outlet property="disburseMoneyLabel" destination="nqi-5O-w2V" id="eJ4-NT-7ob"/>
+                                            <outlet property="disburseTypeLabel" destination="jae-E5-UAx" id="sn0-3g-tCn"/>
+                                            <outlet property="weakLabel" destination="KY2-0H-Dao" id="C0E-rL-KoN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

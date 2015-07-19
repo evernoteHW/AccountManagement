@@ -49,6 +49,9 @@
 		74A75BA61B477CC7007CAC57 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A75BA51B477CC7007CAC57 /* OrderDetailViewController.m */; };
 		74A75BA91B478528007CAC57 /* OrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A75BA81B478528007CAC57 /* OrderInfoModel.m */; };
 		74A75BAD1B47A9C4007CAC57 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A75BAC1B47A9C4007CAC57 /* PopoverView.m */; };
+		74B6B7DA1B5B7B3300384C8E /* PerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6B7D91B5B7B3300384C8E /* PerformanceViewController.m */; };
+		74B6B7DD1B5BD09200384C8E /* PerformanceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6B7DC1B5BD09200384C8E /* PerformanceDetailViewController.m */; };
+		74B6B7E01B5BD32200384C8E /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6B7DF1B5BD32200384C8E /* PageContentViewController.m */; };
 		74BD88CD1B2A8A6400FD7E77 /* MainfestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BD88CC1B2A8A6400FD7E77 /* MainfestViewController.m */; };
 		74BD88D01B2AAD7400FD7E77 /* MainfestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BD88CF1B2AAD7400FD7E77 /* MainfestTableViewCell.m */; };
 		74BD88D31B2ADB8F00FD7E77 /* MainfestDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BD88D21B2ADB8F00FD7E77 /* MainfestDetailInfoViewController.m */; };
@@ -167,6 +170,12 @@
 		74A75BA81B478528007CAC57 /* OrderInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoModel.m; sourceTree = "<group>"; };
 		74A75BAB1B47A9C4007CAC57 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		74A75BAC1B47A9C4007CAC57 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		74B6B7D81B5B7B3300384C8E /* PerformanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceViewController.h; sourceTree = "<group>"; };
+		74B6B7D91B5B7B3300384C8E /* PerformanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceViewController.m; sourceTree = "<group>"; };
+		74B6B7DB1B5BD09200384C8E /* PerformanceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceDetailViewController.h; sourceTree = "<group>"; };
+		74B6B7DC1B5BD09200384C8E /* PerformanceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceDetailViewController.m; sourceTree = "<group>"; };
+		74B6B7DE1B5BD32200384C8E /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		74B6B7DF1B5BD32200384C8E /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		74BD88CB1B2A8A6400FD7E77 /* MainfestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainfestViewController.h; sourceTree = "<group>"; };
 		74BD88CC1B2A8A6400FD7E77 /* MainfestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainfestViewController.m; sourceTree = "<group>"; };
 		74BD88CE1B2AAD7400FD7E77 /* MainfestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainfestTableViewCell.h; sourceTree = "<group>"; };
@@ -468,6 +477,43 @@
 			path = PopoverView;
 			sourceTree = "<group>";
 		};
+		74B6B7D41B5B7B2200384C8E /* Performance */ = {
+			isa = PBXGroup;
+			children = (
+				74B6B7D51B5B7B2200384C8E /* Model */,
+				74B6B7D61B5B7B2200384C8E /* ViewController */,
+				74B6B7D71B5B7B2200384C8E /* Views */,
+			);
+			path = Performance;
+			sourceTree = "<group>";
+		};
+		74B6B7D51B5B7B2200384C8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		74B6B7D61B5B7B2200384C8E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				74B6B7D81B5B7B3300384C8E /* PerformanceViewController.h */,
+				74B6B7D91B5B7B3300384C8E /* PerformanceViewController.m */,
+				74B6B7DE1B5BD32200384C8E /* PageContentViewController.h */,
+				74B6B7DF1B5BD32200384C8E /* PageContentViewController.m */,
+				74B6B7DB1B5BD09200384C8E /* PerformanceDetailViewController.h */,
+				74B6B7DC1B5BD09200384C8E /* PerformanceDetailViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		74B6B7D71B5B7B2200384C8E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		74BD88C71B2A8A5400FD7E77 /* Mainfest */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,6 +703,7 @@
 		74DEA09A1B26BE51007E42AC /* Struct */ = {
 			isa = PBXGroup;
 			children = (
+				74B6B7D41B5B7B2200384C8E /* Performance */,
 				74D85BEE1B500E9F009FA41D /* Disburse */,
 				744A4C911B4A620600276E84 /* Setting */,
 				74A75B7E1B476F07007CAC57 /* Cashier */,
@@ -864,6 +911,7 @@
 			files = (
 				7431C0AA1B281EB900DF7E47 /* AddressBookDetailInfoController.m in Sources */,
 				74A75BA61B477CC7007CAC57 /* OrderDetailViewController.m in Sources */,
+				74B6B7E01B5BD32200384C8E /* PageContentViewController.m in Sources */,
 				74A75B971B476F07007CAC57 /* CashierDetailInfoViewController.m in Sources */,
 				74EAEFC81B58E6E80086CDE4 /* CustomTitleView.m in Sources */,
 				74BD88CD1B2A8A6400FD7E77 /* MainfestViewController.m in Sources */,
@@ -886,6 +934,7 @@
 				74DEA0991B26BAD1007E42AC /* RootTabBarViewController.m in Sources */,
 				74D56D451B29BA44000C721C /* DataServies.m in Sources */,
 				74DEA0AC1B26C17D007E42AC /* UIColor+Extension.m in Sources */,
+				74B6B7DD1B5BD09200384C8E /* PerformanceDetailViewController.m in Sources */,
 				74A75B9D1B476F07007CAC57 /* CashierTableViewCell.m in Sources */,
 				74D5F2EE1B553B4800161283 /* CustomPickerView.m in Sources */,
 				74DEA0701B268883007E42AC /* AppDelegate.m in Sources */,
@@ -904,6 +953,7 @@
 				7431C0A11B280F9700DF7E47 /* AddressBookDetailInfo.m in Sources */,
 				74FAF1971B426D71000799B4 /* BaseIBView.m in Sources */,
 				74E719E61B579D7700977DF7 /* DisburseModel.m in Sources */,
+				74B6B7DA1B5B7B3300384C8E /* PerformanceViewController.m in Sources */,
 				742E0A0A1B4A188800123DD5 /* NSDate+UIUtils.m in Sources */,
 				74DEA0A41B26BE7E007E42AC /* FlowCollectionViewCell.m in Sources */,
 				74A75BA31B4771C7007CAC57 /* OrderTableViewCell.m in Sources */,
