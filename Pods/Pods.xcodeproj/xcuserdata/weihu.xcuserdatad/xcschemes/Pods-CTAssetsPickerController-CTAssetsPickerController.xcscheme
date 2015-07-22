@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DFACAE0279B5C6EA8BFE9A6A"
+               BlueprintIdentifier = "000C405AE461FCA0882E7F5F"
                BuildableName = "CTAssetsPickerController.bundle"
-               BlueprintName = "CTAssetsPickerController"
+               BlueprintName = "Pods-CTAssetsPickerController-CTAssetsPickerController"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

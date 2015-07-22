@@ -73,7 +73,7 @@
        return nil;
    }
    // 创建一个新的控制器类，并且分配给相应的数据
-   PageContentViewController *dataViewController = [[PageContentViewController alloc] init];
+    PageContentViewController *dataViewController = [self storyBoardWithIdentifier:@"PageContentViewController"];
    dataViewController.dataObject = [self.pageContent objectAtIndex:index];
    return dataViewController;
 }
@@ -96,6 +96,7 @@
    // 返回的ViewController，将被添加到相应的UIPageViewController对象上。
    // UIPageViewController对象会根据UIPageViewControllerDataSource协议方法，自动来维护次序。
    // 不用我们去操心每个ViewController的顺序问题。
+    self.title = [NSString stringWithFormat:@"2015年%ld月",index];
    return [self viewControllerAtIndex:index];
    
    
@@ -112,6 +113,8 @@
    if (index == [self.pageContent count]) {
        return nil;
    }
+    self.title = [NSString stringWithFormat:@"2015年%ld月",index];
+    
    return [self viewControllerAtIndex:index];
    
    

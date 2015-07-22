@@ -40,6 +40,24 @@
 		747F0A4B1B3C38AB00CA2689 /* UserLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F0A4A1B3C38AB00CA2689 /* UserLoginModel.m */; };
 		747F0A4E1B3C3C2E00CA2689 /* MenuItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 747F0A4D1B3C3C2E00CA2689 /* MenuItemModel.m */; };
 		748D2B621B4119A000F1A6CD /* AccessorieFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 748D2B611B4119A000F1A6CD /* AccessorieFlowLayout.m */; };
+		749728681B5BDEF200CEBCE1 /* GKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7497285F1B5BDEF200CEBCE1 /* GKBar.m */; };
+		749728691B5BDEF200CEBCE1 /* GKBarGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 749728611B5BDEF200CEBCE1 /* GKBarGraph.m */; };
+		7497286A1B5BDEF200CEBCE1 /* GKLineGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 749728651B5BDEF200CEBCE1 /* GKLineGraph.m */; };
+		7497286B1B5BDEF200CEBCE1 /* UIColor+GraphKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 749728671B5BDEF200CEBCE1 /* UIColor+GraphKit.m */; };
+		749728721B5BDF4500CEBCE1 /* ScrollViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7497286F1B5BDF4500CEBCE1 /* ScrollViewFrameAccessor.m */; };
+		749728731B5BDF4500CEBCE1 /* ViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 749728711B5BDF4500CEBCE1 /* ViewFrameAccessor.m */; };
+		749728841B5BDFCC00CEBCE1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 749728751B5BDFCC00CEBCE1 /* LICENSE */; };
+		749728851B5BDFCC00CEBCE1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 749728761B5BDFCC00CEBCE1 /* README.md */; };
+		749728861B5BDFCC00CEBCE1 /* NSArray+MK_Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 7497287B1B5BDFCC00CEBCE1 /* NSArray+MK_Block.m */; };
+		749728871B5BDFCC00CEBCE1 /* NSArray+MK_Misc.m in Sources */ = {isa = PBXBuildFile; fileRef = 7497287D1B5BDFCC00CEBCE1 /* NSArray+MK_Misc.m */; };
+		749728881B5BDFCC00CEBCE1 /* NSMutableArray+MK_Misc.m in Sources */ = {isa = PBXBuildFile; fileRef = 7497287F1B5BDFCC00CEBCE1 /* NSMutableArray+MK_Misc.m */; };
+		749728891B5BDFCC00CEBCE1 /* NSMutableArray+MK_Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 749728811B5BDFCC00CEBCE1 /* NSMutableArray+MK_Queue.m */; };
+		7497288A1B5BDFCC00CEBCE1 /* NSMutableArray+MK_Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 749728831B5BDFCC00CEBCE1 /* NSMutableArray+MK_Stack.m */; };
+		7497288D1B5BEC4800CEBCE1 /* TableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7497288C1B5BEC4800CEBCE1 /* TableHeaderView.m */; };
+		7497288F1B5BEC5600CEBCE1 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7497288E1B5BEC5600CEBCE1 /* TableHeaderView.xib */; };
+		749728921B5BEECC00CEBCE1 /* PerformanceDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 749728911B5BEECC00CEBCE1 /* PerformanceDetailTableViewCell.m */; };
+		749728951B5BF47200CEBCE1 /* AddPerformanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 749728941B5BF47200CEBCE1 /* AddPerformanceView.m */; };
+		749728971B5BF48900CEBCE1 /* AddPerformanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 749728961B5BF48900CEBCE1 /* AddPerformanceView.xib */; };
 		74A75B961B476F07007CAC57 /* CashierModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A75B811B476F07007CAC57 /* CashierModel.m */; };
 		74A75B971B476F07007CAC57 /* CashierDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A75B841B476F07007CAC57 /* CashierDetailInfoViewController.m */; };
 		74A75B9B1B476F07007CAC57 /* CashierViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A75B8C1B476F07007CAC57 /* CashierViewController.m */; };
@@ -152,6 +170,41 @@
 		747F0A4D1B3C3C2E00CA2689 /* MenuItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemModel.m; sourceTree = "<group>"; };
 		748D2B601B4119A000F1A6CD /* AccessorieFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessorieFlowLayout.h; sourceTree = "<group>"; };
 		748D2B611B4119A000F1A6CD /* AccessorieFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessorieFlowLayout.m; sourceTree = "<group>"; };
+		7497285E1B5BDEF200CEBCE1 /* GKBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBar.h; sourceTree = "<group>"; };
+		7497285F1B5BDEF200CEBCE1 /* GKBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBar.m; sourceTree = "<group>"; };
+		749728601B5BDEF200CEBCE1 /* GKBarGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBarGraph.h; sourceTree = "<group>"; };
+		749728611B5BDEF200CEBCE1 /* GKBarGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBarGraph.m; sourceTree = "<group>"; };
+		749728621B5BDEF200CEBCE1 /* GraphKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphKit.h; sourceTree = "<group>"; };
+		749728641B5BDEF200CEBCE1 /* GKLineGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLineGraph.h; sourceTree = "<group>"; };
+		749728651B5BDEF200CEBCE1 /* GKLineGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLineGraph.m; sourceTree = "<group>"; };
+		749728661B5BDEF200CEBCE1 /* UIColor+GraphKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+GraphKit.h"; sourceTree = "<group>"; };
+		749728671B5BDEF200CEBCE1 /* UIColor+GraphKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GraphKit.m"; sourceTree = "<group>"; };
+		7497286D1B5BDF4500CEBCE1 /* FrameAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameAccessor.h; sourceTree = "<group>"; };
+		7497286E1B5BDF4500CEBCE1 /* ScrollViewFrameAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewFrameAccessor.h; sourceTree = "<group>"; };
+		7497286F1B5BDF4500CEBCE1 /* ScrollViewFrameAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewFrameAccessor.m; sourceTree = "<group>"; };
+		749728701B5BDF4500CEBCE1 /* ViewFrameAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFrameAccessor.h; sourceTree = "<group>"; };
+		749728711B5BDF4500CEBCE1 /* ViewFrameAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFrameAccessor.m; sourceTree = "<group>"; };
+		749728751B5BDFCC00CEBCE1 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		749728761B5BDFCC00CEBCE1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		749728791B5BDFCC00CEBCE1 /* NSArray+MK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MK.h"; sourceTree = "<group>"; };
+		7497287A1B5BDFCC00CEBCE1 /* NSArray+MK_Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MK_Block.h"; sourceTree = "<group>"; };
+		7497287B1B5BDFCC00CEBCE1 /* NSArray+MK_Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MK_Block.m"; sourceTree = "<group>"; };
+		7497287C1B5BDFCC00CEBCE1 /* NSArray+MK_Misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MK_Misc.h"; sourceTree = "<group>"; };
+		7497287D1B5BDFCC00CEBCE1 /* NSArray+MK_Misc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MK_Misc.m"; sourceTree = "<group>"; };
+		7497287E1B5BDFCC00CEBCE1 /* NSMutableArray+MK_Misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+MK_Misc.h"; sourceTree = "<group>"; };
+		7497287F1B5BDFCC00CEBCE1 /* NSMutableArray+MK_Misc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+MK_Misc.m"; sourceTree = "<group>"; };
+		749728801B5BDFCC00CEBCE1 /* NSMutableArray+MK_Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+MK_Queue.h"; sourceTree = "<group>"; };
+		749728811B5BDFCC00CEBCE1 /* NSMutableArray+MK_Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+MK_Queue.m"; sourceTree = "<group>"; };
+		749728821B5BDFCC00CEBCE1 /* NSMutableArray+MK_Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+MK_Stack.h"; sourceTree = "<group>"; };
+		749728831B5BDFCC00CEBCE1 /* NSMutableArray+MK_Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+MK_Stack.m"; sourceTree = "<group>"; };
+		7497288B1B5BEC4800CEBCE1 /* TableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableHeaderView.h; sourceTree = "<group>"; };
+		7497288C1B5BEC4800CEBCE1 /* TableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableHeaderView.m; sourceTree = "<group>"; };
+		7497288E1B5BEC5600CEBCE1 /* TableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableHeaderView.xib; sourceTree = "<group>"; };
+		749728901B5BEECC00CEBCE1 /* PerformanceDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceDetailTableViewCell.h; sourceTree = "<group>"; };
+		749728911B5BEECC00CEBCE1 /* PerformanceDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceDetailTableViewCell.m; sourceTree = "<group>"; };
+		749728931B5BF47200CEBCE1 /* AddPerformanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPerformanceView.h; sourceTree = "<group>"; };
+		749728941B5BF47200CEBCE1 /* AddPerformanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPerformanceView.m; sourceTree = "<group>"; };
+		749728961B5BF48900CEBCE1 /* AddPerformanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPerformanceView.xib; sourceTree = "<group>"; };
 		74A75B801B476F07007CAC57 /* CashierModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashierModel.h; sourceTree = "<group>"; };
 		74A75B811B476F07007CAC57 /* CashierModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashierModel.m; sourceTree = "<group>"; };
 		74A75B831B476F07007CAC57 /* CashierDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashierDetailInfoViewController.h; sourceTree = "<group>"; };
@@ -390,6 +443,88 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7497285C1B5BDEF200CEBCE1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				749728741B5BDFCC00CEBCE1 /* MKFoundationKit */,
+				7497286C1B5BDF4500CEBCE1 /* FrameAccessor */,
+				7497285D1B5BDEF200CEBCE1 /* BarGraph */,
+				749728621B5BDEF200CEBCE1 /* GraphKit.h */,
+				749728631B5BDEF200CEBCE1 /* LineGraph */,
+				749728661B5BDEF200CEBCE1 /* UIColor+GraphKit.h */,
+				749728671B5BDEF200CEBCE1 /* UIColor+GraphKit.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		7497285D1B5BDEF200CEBCE1 /* BarGraph */ = {
+			isa = PBXGroup;
+			children = (
+				7497285E1B5BDEF200CEBCE1 /* GKBar.h */,
+				7497285F1B5BDEF200CEBCE1 /* GKBar.m */,
+				749728601B5BDEF200CEBCE1 /* GKBarGraph.h */,
+				749728611B5BDEF200CEBCE1 /* GKBarGraph.m */,
+			);
+			path = BarGraph;
+			sourceTree = "<group>";
+		};
+		749728631B5BDEF200CEBCE1 /* LineGraph */ = {
+			isa = PBXGroup;
+			children = (
+				749728641B5BDEF200CEBCE1 /* GKLineGraph.h */,
+				749728651B5BDEF200CEBCE1 /* GKLineGraph.m */,
+			);
+			path = LineGraph;
+			sourceTree = "<group>";
+		};
+		7497286C1B5BDF4500CEBCE1 /* FrameAccessor */ = {
+			isa = PBXGroup;
+			children = (
+				7497286D1B5BDF4500CEBCE1 /* FrameAccessor.h */,
+				7497286E1B5BDF4500CEBCE1 /* ScrollViewFrameAccessor.h */,
+				7497286F1B5BDF4500CEBCE1 /* ScrollViewFrameAccessor.m */,
+				749728701B5BDF4500CEBCE1 /* ViewFrameAccessor.h */,
+				749728711B5BDF4500CEBCE1 /* ViewFrameAccessor.m */,
+			);
+			path = FrameAccessor;
+			sourceTree = "<group>";
+		};
+		749728741B5BDFCC00CEBCE1 /* MKFoundationKit */ = {
+			isa = PBXGroup;
+			children = (
+				749728751B5BDFCC00CEBCE1 /* LICENSE */,
+				749728761B5BDFCC00CEBCE1 /* README.md */,
+				749728771B5BDFCC00CEBCE1 /* Source */,
+			);
+			path = MKFoundationKit;
+			sourceTree = "<group>";
+		};
+		749728771B5BDFCC00CEBCE1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				749728781B5BDFCC00CEBCE1 /* NSArray */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		749728781B5BDFCC00CEBCE1 /* NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				749728791B5BDFCC00CEBCE1 /* NSArray+MK.h */,
+				7497287A1B5BDFCC00CEBCE1 /* NSArray+MK_Block.h */,
+				7497287B1B5BDFCC00CEBCE1 /* NSArray+MK_Block.m */,
+				7497287C1B5BDFCC00CEBCE1 /* NSArray+MK_Misc.h */,
+				7497287D1B5BDFCC00CEBCE1 /* NSArray+MK_Misc.m */,
+				7497287E1B5BDFCC00CEBCE1 /* NSMutableArray+MK_Misc.h */,
+				7497287F1B5BDFCC00CEBCE1 /* NSMutableArray+MK_Misc.m */,
+				749728801B5BDFCC00CEBCE1 /* NSMutableArray+MK_Queue.h */,
+				749728811B5BDFCC00CEBCE1 /* NSMutableArray+MK_Queue.m */,
+				749728821B5BDFCC00CEBCE1 /* NSMutableArray+MK_Stack.h */,
+				749728831B5BDFCC00CEBCE1 /* NSMutableArray+MK_Stack.m */,
+			);
+			path = NSArray;
+			sourceTree = "<group>";
+		};
 		74A75B7E1B476F07007CAC57 /* Cashier */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +645,14 @@
 		74B6B7D71B5B7B2200384C8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7497288B1B5BEC4800CEBCE1 /* TableHeaderView.h */,
+				7497288C1B5BEC4800CEBCE1 /* TableHeaderView.m */,
+				7497288E1B5BEC5600CEBCE1 /* TableHeaderView.xib */,
+				749728901B5BEECC00CEBCE1 /* PerformanceDetailTableViewCell.h */,
+				749728911B5BEECC00CEBCE1 /* PerformanceDetailTableViewCell.m */,
+				749728931B5BF47200CEBCE1 /* AddPerformanceView.h */,
+				749728941B5BF47200CEBCE1 /* AddPerformanceView.m */,
+				749728961B5BF48900CEBCE1 /* AddPerformanceView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -760,6 +903,7 @@
 		74DEA0A81B26C153007E42AC /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				7497285C1B5BDEF200CEBCE1 /* Source */,
 				742E0A071B4A187000123DD5 /* NSDate+UIUtils */,
 				74A75BAA1B47A9B9007CAC57 /* PopoverView */,
 				74D56D401B29BA40000C721C /* NetWork */,
@@ -885,12 +1029,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				74DEA0761B268883007E42AC /* Main.storyboard in Resources */,
+				749728971B5BF48900CEBCE1 /* AddPerformanceView.xib in Resources */,
 				74EAEFCA1B58E76C0086CDE4 /* CustomTitleView.xib in Resources */,
 				74E719E31B578E1500977DF7 /* CustomPickerWordsView.xib in Resources */,
 				74D5F2F51B554A4300161283 /* CustomDatePickerView.xib in Resources */,
 				74D5F2F01B553B7100161283 /* CustomPickerView.xib in Resources */,
 				741937B81B298B1B006DAB37 /* Localizable.strings in Resources */,
+				749728841B5BDFCC00CEBCE1 /* LICENSE in Resources */,
 				74DEA07B1B268883007E42AC /* LaunchScreen.xib in Resources */,
+				7497288F1B5BEC5600CEBCE1 /* TableHeaderView.xib in Resources */,
 				74DEA0781B268883007E42AC /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -913,6 +1060,8 @@
 				74A75BA61B477CC7007CAC57 /* OrderDetailViewController.m in Sources */,
 				74B6B7E01B5BD32200384C8E /* PageContentViewController.m in Sources */,
 				74A75B971B476F07007CAC57 /* CashierDetailInfoViewController.m in Sources */,
+				749728851B5BDFCC00CEBCE1 /* README.md in Sources */,
+				7497286A1B5BDEF200CEBCE1 /* GKLineGraph.m in Sources */,
 				74EAEFC81B58E6E80086CDE4 /* CustomTitleView.m in Sources */,
 				74BD88CD1B2A8A6400FD7E77 /* MainfestViewController.m in Sources */,
 				7405471D1B3E3B760041BDFE /* BaseDataModel.m in Sources */,
@@ -920,13 +1069,17 @@
 				7464ED151B29492A00E28441 /* UIPlaceHolderTextView.m in Sources */,
 				7464ED0F1B29362A00E28441 /* DetailInfoFlowLayout.m in Sources */,
 				74A75BA01B476F3E007CAC57 /* OrderViewController.m in Sources */,
+				749728721B5BDF4500CEBCE1 /* ScrollViewFrameAccessor.m in Sources */,
+				749728861B5BDFCC00CEBCE1 /* NSArray+MK_Block.m in Sources */,
 				747F0A481B3C2DD100CA2689 /* LoginTableViewController.m in Sources */,
 				7464ED121B293C0100E28441 /* DetailInfoCollectionViewCell.m in Sources */,
 				7464ED0C1B29238100E28441 /* UIActionSheet+Blocks.m in Sources */,
 				74DEA0951B268DA3007E42AC /* BaseNavigationController.m in Sources */,
+				749728731B5BDF4500CEBCE1 /* ViewFrameAccessor.m in Sources */,
 				740547221B3E93C90041BDFE /* MainfestModel.m in Sources */,
 				74A75B961B476F07007CAC57 /* CashierModel.m in Sources */,
 				74D85BF71B501363009FA41D /* DisburseDetailViewController.m in Sources */,
+				749728891B5BDFCC00CEBCE1 /* NSMutableArray+MK_Queue.m in Sources */,
 				74A75BAD1B47A9C4007CAC57 /* PopoverView.m in Sources */,
 				74BD88D01B2AAD7400FD7E77 /* MainfestTableViewCell.m in Sources */,
 				74DEA0961B268DA3007E42AC /* BaseViewController.m in Sources */,
@@ -934,9 +1087,12 @@
 				74DEA0991B26BAD1007E42AC /* RootTabBarViewController.m in Sources */,
 				74D56D451B29BA44000C721C /* DataServies.m in Sources */,
 				74DEA0AC1B26C17D007E42AC /* UIColor+Extension.m in Sources */,
+				749728681B5BDEF200CEBCE1 /* GKBar.m in Sources */,
 				74B6B7DD1B5BD09200384C8E /* PerformanceDetailViewController.m in Sources */,
 				74A75B9D1B476F07007CAC57 /* CashierTableViewCell.m in Sources */,
+				7497286B1B5BDEF200CEBCE1 /* UIColor+GraphKit.m in Sources */,
 				74D5F2EE1B553B4800161283 /* CustomPickerView.m in Sources */,
+				749728691B5BDEF200CEBCE1 /* GKBarGraph.m in Sources */,
 				74DEA0701B268883007E42AC /* AppDelegate.m in Sources */,
 				74DEA0B91B26ECF1007E42AC /* UIImage+ImageFormColor.m in Sources */,
 				74DEA0B61B26DF12007E42AC /* CHTCollectionViewWaterfallLayout.m in Sources */,
@@ -945,20 +1101,26 @@
 				744A4C971B4A621700276E84 /* SettingTableViewController.m in Sources */,
 				74D56D461B29BA44000C721C /* NetworkManager.m in Sources */,
 				74A75BA91B478528007CAC57 /* OrderInfoModel.m in Sources */,
+				749728951B5BF47200CEBCE1 /* AddPerformanceView.m in Sources */,
 				74DEA0A71B26BEAB007E42AC /* AccessorieViewController.m in Sources */,
+				749728921B5BEECC00CEBCE1 /* PerformanceDetailTableViewCell.m in Sources */,
 				7443D0541B466B7F001393DE /* BaseTableViewController.m in Sources */,
 				742E0A0D1B4A2DB000123DD5 /* RegisterTableViewController.m in Sources */,
 				74D5F2F31B554A3800161283 /* CustomDatePickerView.m in Sources */,
 				7431C0931B27CBC500DF7E47 /* ContactPlistViewController.m in Sources */,
+				749728881B5BDFCC00CEBCE1 /* NSMutableArray+MK_Misc.m in Sources */,
 				7431C0A11B280F9700DF7E47 /* AddressBookDetailInfo.m in Sources */,
 				74FAF1971B426D71000799B4 /* BaseIBView.m in Sources */,
 				74E719E61B579D7700977DF7 /* DisburseModel.m in Sources */,
 				74B6B7DA1B5B7B3300384C8E /* PerformanceViewController.m in Sources */,
 				742E0A0A1B4A188800123DD5 /* NSDate+UIUtils.m in Sources */,
 				74DEA0A41B26BE7E007E42AC /* FlowCollectionViewCell.m in Sources */,
+				7497288A1B5BDFCC00CEBCE1 /* NSMutableArray+MK_Stack.m in Sources */,
 				74A75BA31B4771C7007CAC57 /* OrderTableViewCell.m in Sources */,
 				747F0A4B1B3C38AB00CA2689 /* UserLoginModel.m in Sources */,
+				7497288D1B5BEC4800CEBCE1 /* TableHeaderView.m in Sources */,
 				74A75B9B1B476F07007CAC57 /* CashierViewController.m in Sources */,
+				749728871B5BDFCC00CEBCE1 /* NSArray+MK_Misc.m in Sources */,
 				7464ED1B1B2972A700E28441 /* UIAlertView+Blocks.m in Sources */,
 				748D2B621B4119A000F1A6CD /* AccessorieFlowLayout.m in Sources */,
 				7431C0961B27CE8B00DF7E47 /* ContactPlistTableViewCell.m in Sources */,

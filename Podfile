@@ -14,10 +14,5 @@ pod 'AVOSCloudSNS'
 pod 'SVProgressHUD', :head
 pod 'MBProgressHUD', '~> 0.9.1'
 
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '7.0'
-pod 'JTCalendar', path: '..'
+pod 'JTCalendar', '~> 2.0'
 
-pod 'BButton'
-pod 'FrameAccessor', '~> 1.3.2'
-pod 'MKFoundationKit/NSArray', '~> 1.2.2'

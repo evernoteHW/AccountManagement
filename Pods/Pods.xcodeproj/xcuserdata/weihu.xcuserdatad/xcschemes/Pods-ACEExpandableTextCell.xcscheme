@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41C32D194D3110149A77B237"
+               BlueprintIdentifier = "02F3AF1E11D91629A725D905"
                BuildableName = "libPods-ACEExpandableTextCell.a"
                BlueprintName = "Pods-ACEExpandableTextCell"
                ReferencedContainer = "container:Pods.xcodeproj">

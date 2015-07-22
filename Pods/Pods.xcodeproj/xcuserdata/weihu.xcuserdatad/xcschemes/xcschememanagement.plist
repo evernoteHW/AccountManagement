@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CTAssetsPickerController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-AAShareBubbles.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -40,6 +35,11 @@
 			<false/>
 		</dict>
 		<key>Pods-AVOSCloudSNS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-CTAssetsPickerController-CTAssetsPickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -97,92 +97,92 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>18B14880E8546D3C6DF90C11</key>
+		<key>000C405AE461FCA0882E7F5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2659C7F0C00E78A345EFEF59</key>
+		<key>02F3AF1E11D91629A725D905</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B76A621339223805EA10B3B</key>
+		<key>0DC04A52857784F0328DAADB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E590E9BBFA10E608A79A675</key>
+		<key>1DE8932322CD128D2C4F9AEA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>399C439C4425F69A7F89C625</key>
+		<key>2AB43E8283EA8BA6A077975D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41C32D194D3110149A77B237</key>
+		<key>33C8C02FA38F236B545BAB92</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C181806889173B3FAB753BD</key>
+		<key>4E055F24FC20B0A47BBCF899</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B62D04D1AB2F92F4ECDD3F1</key>
+		<key>5775F21550B4B709A58B84CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>77D9A57981528FE1AAC18806</key>
+		<key>5DCD652D608C120AC35E459A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7DE340CCDEBE166CD2222A23</key>
+		<key>759EF0243AABC2F9AA2D1F34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>812DD9641C12C9BC1C4D0E1D</key>
+		<key>A93921E13AA8F2B3EBAD6C99</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8B5DDE3BABADDDD45708DB21</key>
+		<key>AAD80B2A58A9E0775D04D133</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97EBB33654857A4423D6999E</key>
+		<key>AFB6282A261ECFF0BC9B938A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F3BAB9E0BE4FC50FC529578</key>
+		<key>B326DB54797FD497052F8C9E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7A4062E6132D99287883963</key>
+		<key>B941C4A68AFF9A78AA54B2C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DFACAE0279B5C6EA8BFE9A6A</key>
+		<key>CB7DD25F85AE013499C76272</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB1884E9CDB8342521D7AD88</key>
+		<key>F6243FB419DD3047E4FF39E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB4FF4D2006B4B790D1A1E99</key>
+		<key>FF53CEB915E210B56E870937</key>
 		<dict>
 			<key>primary</key>
 			<true/>
