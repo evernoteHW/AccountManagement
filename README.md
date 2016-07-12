@@ -1,3 +1,3 @@
 # AccountManagement
 AAAACCCCC
-https://github.com/IFTTT/JazzHands/blob/master/Example/Docs/jazzhands-demo.gif
+ ![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
